@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Parallax
+    uniqueID: 4290821047
+    locked: 0
   - name: Prop
     uniqueID: 1978899825
     locked: 0
