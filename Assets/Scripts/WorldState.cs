@@ -14,16 +14,16 @@ public class WorldState : MonoBehaviour
 
     bool[] flag = new bool[(int)flagID.NumberOfFlags];
 
-    public void AddKarma(double amount) {
+    public void AddKarma(double amount, bool supressNotification = false) {
         karma += amount;
-    }
 
-    private void Start() {
-        tx.color = new Color(1, 0.5f, 0, 1);
+        if(supressNotification == false) {
+            tx.GetComponent<Animator>().SetTrigger("fadeIn");
+            Debug.Log("klick");
+        }
     }
 
     private void Update() {
-        tx.color = new Color(tx.color.r, tx.color.g, tx.color.b, tx.color.a * 0.99f);
-        Debug.Log(tx.color);
+        
     }
 }
