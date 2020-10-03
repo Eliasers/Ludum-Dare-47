@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
 
+    bool grounded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,17 +22,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        grounded = Physics2D.OverlapCircle(transform.position, 0.25f, StaticStuff.solidLayers) != null;
+        anim.SetBool("Grounded", grounded);
+
         float xMove = Input.GetAxis("Horizontal");
+        anim.SetFloat("Abs X Move", Mathf.Abs(xMove));
 
         rb.velocity = new Vector2(xMove * movementSpeed, rb.velocity.y);
 
         if (xMove != 0) { transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); }
 
-        anim.SetFloat("Abs X Move", Mathf.Abs(xMove));
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && grounded)
         {
-            rb.AddForce(jumpForce * Vector2.up);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 }

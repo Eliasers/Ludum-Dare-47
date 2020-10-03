@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: fa4d031d83b3402438af5ed05f0f5d66
+guid: 65e9b9a534dc0c947b1400858f45f6bd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6853316077166303748
-    second: Tree_0
+      213: 6545382614753218560
+    second: bush_0
   - first:
-      213: 4134985361545656292
-    second: Tree_1
+      213: -2393253423863688536
+    second: bush_1
   - first:
-      213: -1566730818833404899
-    second: Tree_2
+      213: 4493076713092915932
+    second: bush_2
   - first:
-      213: 22485308867703054
-    second: Tree_0
+      213: 3039873654732956929
+    second: bush_0
   - first:
-      213: 4235709562182674980
-    second: Tree_1
+      213: -3693536723388055723
+    second: bush_1
   - first:
-      213: 90771431962346408
-    second: Tree_2
+      213: 6594853704562152753
+    second: bush_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tree_0
+      name: bush_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 64
-        height: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0179bfe442ef4000800000000000000
-      internalID: 22485308867703054
+      spriteID: 1052d68abfccf2a20800000000000000
+      internalID: 3039873654732956929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tree_1
+      name: bush_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42aaf91b76348ca30800000000000000
-      internalID: 4235709562182674980
+      spriteID: 55f38955bebedbcc0800000000000000
+      internalID: -3693536723388055723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tree_2
+      name: bush_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a38edde22c724100800000000000000
-      internalID: 90771431962346408
+      spriteID: 1359816d080a58b50800000000000000
+      internalID: 6594853704562152753
       vertices: []
       indices: 
       edges: []
