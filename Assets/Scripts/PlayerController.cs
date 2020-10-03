@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(xMove * movementSpeed, rb.velocity.y);
 
-        sr.flipX = true;
+        if (xMove != 0) { sr.flipX = (xMove < 0); }
 
         anim.SetFloat("Abs X Move", Mathf.Abs(xMove));
     }

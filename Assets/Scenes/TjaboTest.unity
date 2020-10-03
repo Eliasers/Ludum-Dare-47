@@ -279,7 +279,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1363126842}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1363126843}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -295,7 +295,27 @@ PrefabInstance:
     - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
         type: 3}
       propertyPath: m_Text
-      value: <color=white>Karma has</color> <color=green>increased</color> outside
+      value: Karma has increased outside
+      objectReference: {fileID: 0}
+    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1576643532538561432, guid: a97a3bef59597394b84ed1b9b3230e6f,
         type: 3}
@@ -429,6 +449,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a97a3bef59597394b84ed1b9b3230e6f, type: 3}
+--- !u!1 &1363126843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8229320501593233307, guid: a97a3bef59597394b84ed1b9b3230e6f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1363126842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1363126844
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363126843}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3f0a3790aa7b7f4980fcbe4e0c09fd4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1393244092
 GameObject:
   m_ObjectHideFlags: 0
