@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class StaticStuff
 {
-    public static LayerMask solidLayers
+    public static LayerMask SolidLayers
     {
         get
         {
             return LayerMask.GetMask(new string[] { "Terrain" });
+        }
+    }
+    public static LayerMask Hurtables
+    {
+        get
+        {
+            return LayerMask.GetMask(new string[] { "Player", "NPC" });
         }
     }
 }
