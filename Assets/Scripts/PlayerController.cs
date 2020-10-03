@@ -5,17 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed;
+    public float jumpSpeed;
     
     Rigidbody2D rb;
     Animator anim;
-    SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -25,8 +24,14 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(xMove * movementSpeed, rb.velocity.y);
 
-        if (xMove != 0) { sr.flipX = (xMove < 0); }
+        if (xMove != 0) { transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); }
 
         anim.SetFloat("Abs X Move", Mathf.Abs(xMove));
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("Jump");
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+        }
     }
 }
