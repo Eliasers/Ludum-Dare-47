@@ -687,9 +687,10 @@ MonoBehaviour:
   - I'm making a watch.
   - Or, well, that's the idea...
   - You see, I don't have any clockium.
-  - And as we all know, there is no hope for a watch to work without it...
+  - And as we all know, there is no hope for a time-telling device to function without
+    it...
   - If you happen upon any, won't you let me know? I would really like to know what
-    time it is.
+    time it is!
   secondsPerLetter: 0.2
 --- !u!114 &609434138
 MonoBehaviour:
