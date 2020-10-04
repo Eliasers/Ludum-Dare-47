@@ -13,12 +13,15 @@ public class SpeechController : MonoBehaviour
     public GameObject textObjPrefab;
     TextMeshPro text;
 
+    public float textYOffset;
+    public float textXOffset;
+    public bool repeatLines;
     public string fallBackLine;
     public List<string> voiceLines;
 
     bool touchingPlayer;
     int counter;
-    float framesPerLetter = 30;
+    float framesPerLetter = 120;
 
     private void Awake() {
         textObjPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TextBubble.prefab");
@@ -26,7 +29,7 @@ public class SpeechController : MonoBehaviour
 
     void Start()
     {
-        GameObject textObj = Instantiate(textObjPrefab);
+        GameObject textObj = Instantiate(textObjPrefab, transform.position + new Vector3(textXOffset, textYOffset, 0), Quaternion.identity);
         textObj.transform.SetParent(transform, false);
 
         anim = textObj.GetComponent<Animator>();
@@ -42,13 +45,18 @@ public class SpeechController : MonoBehaviour
         if (counter == 0 && touchingPlayer) {
             if (voiceLines.Count > 0) {
                 text.text = voiceLines[0];
-                voiceLines.RemoveAt(0);
+                if(repeatLines == true) {
+                    voiceLines.Add(voiceLines[0]);
+                    voiceLines.RemoveAt(0);
+                }
+                else voiceLines.RemoveAt(0);
+
             }
             else text.text = fallBackLine;
             anim.SetTrigger("fadeIn");
             Debug.Log("SAS");
             counter = (int)(text.text.Length * framesPerLetter);
-            anim.speed = 1 / (text.text.Length / 6f);
+            anim.speed = 1 / (text.text.Length / 10f);
         }
 
         if (counter > 0) counter--;
