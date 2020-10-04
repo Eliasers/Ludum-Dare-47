@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class PlayerController : MonoBehaviour
 
     State state;
 
+    List<GameObject> nearbyItems = new List<GameObject>();
+    GameObject nearestItem;
+    GameObject heldItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +40,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.OverlapArea((Vector2)transform.position + new Vector2(-0.2f, 0), (Vector2)transform.position + new Vector2(0.2f, -0.1f), StaticStuff.SolidLayers);
+        grounded = Physics2D.OverlapArea((Vector2)transform.position + new Vector2(-0.1f, 0), (Vector2)transform.position + new Vector2(0.1f, -0.1f), StaticStuff.SolidLayers);
         anim.SetBool("Grounded", grounded);
 
         switch (state) {
@@ -47,7 +52,6 @@ public class PlayerController : MonoBehaviour
 
                 if (xMove != 0) { transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); }
 
-
                 if (Input.GetButtonDown("Jump") && grounded) {
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 }
@@ -57,6 +61,10 @@ public class PlayerController : MonoBehaviour
                     anim.Play("playerAttack");
                     timeAttacking = 0;
                     hasAttacked = false;
+                }
+
+                if (Input.GetButtonDown("PickUp")) {
+                    PickUp();
                 }
                 break;
             case State.Attacking:
@@ -97,6 +105,41 @@ public class PlayerController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+
+        if (nearbyItems.Count > 0) {
+            nearbyItems.OrderBy(item => (item.transform.position - transform.position).magnitude);
+            nearestItem = nearbyItems[0];
+        } else {
+            nearestItem = null;
+        }
+    }
+
+    void PickUp() {
+        if (heldItem != null) {
+            heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            heldItem.GetComponent<Collider2D>().enabled = true;
+            heldItem.transform.parent = null;
+            heldItem.GetComponent<Rigidbody2D>().velocity = rb.velocity;
+            heldItem = null;
+        } else if (nearestItem != null) {
+            heldItem = nearestItem;
+            heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            heldItem.GetComponent<Collider2D>().enabled = false;
+            heldItem.transform.parent = transform;
+            heldItem.transform.localPosition = new Vector2(0, 2);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.CompareTag("Item")) {
+            nearbyItems.Add(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (nearbyItems.Contains(collision.gameObject)) {
+            nearbyItems.Remove(collision.gameObject);
         }
     }
 

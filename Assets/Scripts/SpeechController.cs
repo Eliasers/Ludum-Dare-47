@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class SpeechController : MonoBehaviour
 {
-    BoxCollider2D trigger;
-    public float detectionRangeX, detectionRangeY;
+    CircleCollider2D trigger;
+    public float detectionRange;
 
     Animator anim;
     public GameObject textObjPrefab;
@@ -20,8 +20,8 @@ public class SpeechController : MonoBehaviour
     public List<string> voiceLines;
 
     bool touchingPlayer;
-    int counter;
-    float framesPerLetter = 150;
+    float counter;
+    public float secondsPerLetter = 0.2f;
 
     private void Awake() {
         textObjPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TextBubble.prefab");
@@ -36,35 +36,41 @@ public class SpeechController : MonoBehaviour
 
         text = textObj.GetComponent<TextMeshPro>();
 
-        trigger = gameObject.AddComponent<BoxCollider2D>();
+        trigger = gameObject.AddComponent<CircleCollider2D>();
         trigger.isTrigger = true;
-        trigger.size = new Vector2(detectionRangeX, detectionRangeY);
+        trigger.radius = detectionRange;
     }
 
     private void Update() {
-        if (counter == 0 && touchingPlayer) {
+        if (counter >= 0 && touchingPlayer) {
             if (voiceLines.Count > 0) {
                 text.text = voiceLines[0];
-                if(repeatLines == true) {
+                if (repeatLines == true) {
                     voiceLines.Add(voiceLines[0]);
                     voiceLines.RemoveAt(0);
-                }
-                else voiceLines.RemoveAt(0);
+                } else voiceLines.RemoveAt(0);
 
-            }
-            else text.text = fallBackLine;
-            anim.SetTrigger("fadeIn");
-            Debug.Log("SAS");
-            counter = (int)(text.text.Length * framesPerLetter);
-            anim.speed = 1 / (text.text.Length / (framesPerLetter / 12));
+                DisplayLine();
+            } else text.text = fallBackLine;
         }
 
-        if (counter > 0) counter--;
+        if (counter > 0) counter -= Time.deltaTime;
+    }
+
+    void DisplayLine() {
+        anim.SetTrigger("fadeIn");
+        counter = (int)(text.text.Length * secondsPerLetter);
+        Debug.Log(text.text.Length);
+        anim.speed = 1 / (((text.text.Length != 0) ? text.text.Length : 0.1f) * (secondsPerLetter / 24));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
             touchingPlayer = true;
+
+            if (voiceLines.Count == 0) {
+                DisplayLine();
+            }
         }
     }
 

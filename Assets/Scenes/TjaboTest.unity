@@ -311,21 +311,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb12d099aff4b44893753705d8d4f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRangeX: 2
-  detectionRangeY: 2
+  detectionRange: 3
   textObjPrefab: {fileID: 0}
-  fallBackLine: Fallback
+  textYOffset: 0
+  textXOffset: 0
+  repeatLines: 0
+  fallBackLine: Oh, if only someone would help me...
   voiceLines:
   - Help me brother
   - I need some assistance
-  - j
-  - g
-  - f
-  - r
-  - i
-  - g
-  - j
-  - f
+  - Please?
+  secondsPerLetter: 2
 --- !u!4 &737561959
 Transform:
   m_ObjectHideFlags: 0
@@ -409,18 +405,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7764d971610cf2a46b67b24006533604, type: 3}
---- !u!114 &1322073908 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1363126842}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363126843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1363126842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -428,31 +412,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_Text
-      value: Karma has increased outside
-      objectReference: {fileID: 0}
-    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 328797789431394205, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1576643532538561432, guid: a97a3bef59597394b84ed1b9b3230e6f,
         type: 3}
       propertyPath: m_Name
@@ -563,53 +522,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8565171906936672447, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 99.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565171906936672447, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 78.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565171906936672447, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 775.9752
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565171906936672447, guid: a97a3bef59597394b84ed1b9b3230e6f,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 157.4995
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a97a3bef59597394b84ed1b9b3230e6f, type: 3}
---- !u!1 &1363126843 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8229320501593233307, guid: a97a3bef59597394b84ed1b9b3230e6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1363126842}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1363126844
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363126843}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a3f0a3790aa7b7f4980fcbe4e0c09fd4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1393244092
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ef6e94c56e3194bbb1ea1b3446b90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tx: {fileID: 1322073908}
+  KarmaIncrease: {fileID: 0}
+  KarmaDecrease: {fileID: 0}
 --- !u!4 &1393244094
 Transform:
   m_ObjectHideFlags: 0
