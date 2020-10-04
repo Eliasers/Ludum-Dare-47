@@ -43,8 +43,6 @@ public class SpeechController : MonoBehaviour
 
     private void Update() {
 
-        Debug.Log(counter);
-
         if (counter < 1) {
             anim.SetBool("Fade Out", true);
             anim.SetBool("Fade In", false);

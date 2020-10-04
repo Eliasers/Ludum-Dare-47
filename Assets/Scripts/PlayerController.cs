@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
                         for (int i = 0; i < r.Length; i++) {
                             if (r[i] != null && r[i].gameObject != gameObject) {
                                 if (r[i].CompareTag("Destructible")) {
-                                    Destroy(r[i]);
+                                    Destroy(r[i].gameObject);
                                 }
                             }
                         }
