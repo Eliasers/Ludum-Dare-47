@@ -28,5 +28,10 @@ public class StaticStuff
         GameObject.FindObjectOfType<WorldState>().AddKarma(amount);
     }
 
+    public static void EndLifeCycle() {
+        Debug.Log("Ending cycle");
+        GameObject.FindObjectOfType<WorldState>().PassTime();
+    }
+
     public enum CharacterState { Moving, Attacking, Staggered }
 }

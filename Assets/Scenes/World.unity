@@ -2670,8 +2670,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1195930105
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -11509,15 +11509,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb12d099aff4b44893753705d8d4f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRangeX: 0
-  detectionRangeY: 0
+  detectionRange: 2
   textObjPrefab: {fileID: 4276190811689590358, guid: 05de7d0e3c65fde4788754c12c645cb8,
     type: 3}
   textYOffset: 0.5
   textXOffset: 0
   repeatLines: 0
   fallBackLine: Help! My legs are stuck under this rock!
-  voiceLines: []
+  voiceLines:
+  - 
+  - 
+  secondsPerLetter: 0.2
 --- !u!95 &1803438938
 Animator:
   serializedVersion: 3
@@ -11820,8 +11822,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -4146249
+  m_SortingLayer: -6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8bcc4a61af9ce804289844be6716ab20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -9,18 +9,17 @@ public class WorldState : MonoBehaviour
                 , NumberOfFlags}
 
     static double karma = 0;
+    double karmaGoal = 100;
 
     public GameObject KarmaIncrease, KarmaDecrease;
 
-    DynamicScenery[] dynamicObjs;
+    
 
     bool[] flag = new bool[(int)flagID.NumberOfFlags];
 
     private void Start() {
         KarmaIncrease = GameObject.Find("KarmaUpText");
         KarmaDecrease = GameObject.Find("KarmaDownText");
-
-        dynamicObjs = GameObject.FindObjectsOfType<DynamicScenery>();
     }
 
     public void AddKarma(double amount, bool supressNotification = false) {
@@ -38,11 +37,22 @@ public class WorldState : MonoBehaviour
 
         if (supressNotification == false) {
             KarmaIncrease.GetComponent<Animator>().SetTrigger("fadeIn");
-            Debug.Log("klick");
         }
     }
 
     public void PassTime() {
+        DynamicScenery[] dynamicObjs = GameObject.FindObjectsOfType<DynamicScenery>();
+        NPCController[] NPCOBjs = GameObject.FindObjectsOfType<NPCController>();
+        PlayerController player = GameObject.FindObjectOfType<PlayerController>();
 
+        double progress = karma / karmaGoal;
+
+        for (int i = 0; i < dynamicObjs.Length; i++) {
+            dynamicObjs[i].PassTime(progress);
+        }
+        for (int i = 0; i < NPCOBjs.Length; i++) {
+            NPCOBjs[i].PassTime();
+        }
+        player.Die();
     }
 }
