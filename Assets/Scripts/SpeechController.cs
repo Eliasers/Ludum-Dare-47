@@ -67,8 +67,8 @@ public class SpeechController : MonoBehaviour
     void DisplayLine() {
         anim.SetBool("Fade In", true);
         anim.SetBool("Fade Out", false);
-        float length = Mathf.Clamp(text.text.Length, 5, 50);
-        counter = (int)(length * secondsPerLetter);
+        Debug.Log(Mathf.Sqrt(text.text.Length));
+        counter = Mathf.Sqrt(text.text.Length) * 5 * secondsPerLetter;
         //anim.speed = 1 / (text.text.Length * (secondsPerLetter/3));
     }
 
