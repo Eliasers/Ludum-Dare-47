@@ -21,7 +21,7 @@ public class SpeechController : MonoBehaviour
 
     bool touchingPlayer;
     int counter;
-    float framesPerLetter = 120;
+    float framesPerLetter = 150;
 
     private void Awake() {
         textObjPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TextBubble.prefab");
@@ -56,7 +56,7 @@ public class SpeechController : MonoBehaviour
             anim.SetTrigger("fadeIn");
             Debug.Log("SAS");
             counter = (int)(text.text.Length * framesPerLetter);
-            anim.speed = 1 / (text.text.Length / 10f);
+            anim.speed = 1 / (text.text.Length / (framesPerLetter / 12));
         }
 
         if (counter > 0) counter--;
