@@ -321,7 +321,7 @@ MonoBehaviour:
   - Help me brother
   - I need some assistance
   - Please?
-  secondsPerLetter: 2
+  secondsPerLetter: 0.3
 --- !u!4 &737561959
 Transform:
   m_ObjectHideFlags: 0
