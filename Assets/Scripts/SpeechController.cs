@@ -59,8 +59,9 @@ public class SpeechController : MonoBehaviour
 
     void DisplayLine() {
         anim.SetTrigger("fadeIn");
-        counter = (int)(text.text.Length * secondsPerLetter);
-        anim.speed = 1 / (((text.text.Length != 0) ? text.text.Length : 0.1f) * (secondsPerLetter/3));
+        float length = Mathf.Clamp(text.text.Length, 5, 50);
+        counter = (int)(length * secondsPerLetter);
+        anim.speed = 1 / (text.text.Length * (secondsPerLetter/3));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
