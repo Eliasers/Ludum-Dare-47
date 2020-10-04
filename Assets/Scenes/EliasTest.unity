@@ -236,6 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 374661684}
   - component: {fileID: 374661683}
+  - component: {fileID: 374661685}
   m_Layer: 0
   m_Name: Tree_1
   m_TagString: Untagged
@@ -309,6 +310,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &374661685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374661682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb12d099aff4b44893753705d8d4f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 3
+  textObjPrefab: {fileID: 4276190811689590358, guid: 05de7d0e3c65fde4788754c12c645cb8,
+    type: 3}
+  textYOffset: 0
+  textXOffset: 0
+  repeatLines: 0
+  fallBackLine: Hi!
+  voiceLines: []
+  secondsPerLetter: 0.2
 --- !u!1 &433227882
 GameObject:
   m_ObjectHideFlags: 0

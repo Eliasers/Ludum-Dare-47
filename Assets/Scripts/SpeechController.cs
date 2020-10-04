@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SpeechController : MonoBehaviour
 {
     CircleCollider2D trigger;
-    public float detectionRange;
+    public float detectionRange = 3;
 
     Animator anim;
     public GameObject textObjPrefab;
@@ -42,7 +42,7 @@ public class SpeechController : MonoBehaviour
     }
 
     private void Update() {
-        if (counter >= 0 && touchingPlayer) {
+        if (counter <= 0 && touchingPlayer) {
             if (voiceLines.Count > 0) {
                 text.text = voiceLines[0];
                 if (repeatLines == true) {
@@ -60,8 +60,7 @@ public class SpeechController : MonoBehaviour
     void DisplayLine() {
         anim.SetTrigger("fadeIn");
         counter = (int)(text.text.Length * secondsPerLetter);
-        Debug.Log(text.text.Length);
-        anim.speed = 1 / (((text.text.Length != 0) ? text.text.Length : 0.1f) * (secondsPerLetter / 24));
+        anim.speed = 1 / (((text.text.Length != 0) ? text.text.Length : 0.1f) * (secondsPerLetter/3));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
