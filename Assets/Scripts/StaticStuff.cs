@@ -19,5 +19,12 @@ public class StaticStuff
         }
     }
 
+    public static void RemoveKarma(double amount) {
+        GameObject.FindObjectOfType<WorldState>().RemoveKarma(amount);
+    }
+    public static void AddKarma(double amount) {
+        GameObject.FindObjectOfType<WorldState>().AddKarma(amount);
+    }
+
     public enum CharacterState { Moving, Attacking, Staggered }
 }

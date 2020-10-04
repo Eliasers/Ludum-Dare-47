@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinerController : NPCController
+public class MinerController : DynamicObjectController
 {
     public GameObject rock;
+    SpeechController speech;
+
+    bool isAlive = true;
+
+    private void Start() {
+        speech = GetComponent<SpeechController>();
+
+    }
 
     public override void PassTime()
     {
@@ -12,7 +20,8 @@ public class MinerController : NPCController
 
         if (rock != null)
         {
-            Die();
+            isAlive = false;
+            StaticStuff.RemoveKarma(10);
         }
     }
 }
