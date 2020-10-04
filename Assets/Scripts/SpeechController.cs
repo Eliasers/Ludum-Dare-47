@@ -29,7 +29,7 @@ public class SpeechController : MonoBehaviour
 
     void Start()
     {
-        GameObject textObj = Instantiate(textObjPrefab, transform.position + new Vector3(textXOffset, textYOffset, 0), Quaternion.identity);
+        GameObject textObj = Instantiate(textObjPrefab, new Vector3(textXOffset, textYOffset, 0), Quaternion.identity);
         textObj.transform.SetParent(transform, false);
 
         anim = textObj.GetComponent<Animator>();
@@ -42,26 +42,33 @@ public class SpeechController : MonoBehaviour
     }
 
     private void Update() {
-        if (counter <= 0 && touchingPlayer) {
-            if (voiceLines.Count > 0) {
-                text.text = voiceLines[0];
-                if (repeatLines == true) {
-                    voiceLines.Add(voiceLines[0]);
-                    voiceLines.RemoveAt(0);
-                } else voiceLines.RemoveAt(0);
 
-                DisplayLine();
-            } else text.text = fallBackLine;
+        if (counter < 1) {
+
+            anim.SetTrigger("Fade Out");
+
+            if (counter <= 0 && touchingPlayer && anim.GetCurrentAnimatorStateInfo(0).IsName("Empty")) {
+                if (voiceLines.Count > 0) {
+                    text.text = voiceLines[0];
+                    if (repeatLines == true) {
+                        voiceLines.Add(voiceLines[0]);
+                    }
+                    voiceLines.RemoveAt(0);
+
+                    DisplayLine();
+                } else text.text = fallBackLine;
+            }
         }
+
 
         if (counter > 0) counter -= Time.deltaTime;
     }
 
     void DisplayLine() {
-        anim.SetTrigger("fadeIn");
+        anim.SetTrigger("Fade In");
         float length = Mathf.Clamp(text.text.Length, 5, 50);
         counter = (int)(length * secondsPerLetter);
-        anim.speed = 1 / (text.text.Length * (secondsPerLetter/3));
+        //anim.speed = 1 / (text.text.Length * (secondsPerLetter/3));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
