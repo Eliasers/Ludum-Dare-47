@@ -74,12 +74,8 @@ public class PlayerController : MonoBehaviour
                         Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.25f, cf, r);
                         for (int i = 0; i < r.Length; i++) {
                             if (r[i] != null && r[i].gameObject != gameObject) {
-                                if (r[i].GetComponent<NPCController>() != null) {
-                                    r[i].GetComponent<NPCController>().TakeDamage(gameObject, 1);
-                                } else if (r[i].GetComponent<DestructibleObjectController>() != null) {
-                                    r[i].GetComponent<DestructibleObjectController>().Break();
-                                } else if (r[i].GetComponent<PlayerController>() != null) {
-                                    r[i].GetComponent<PlayerController>().TakeDamage(1);
+                                if (r[i].CompareTag("Destructible")) {
+                                    Destroy(r[i]);
                                 }
                             }
                         }
