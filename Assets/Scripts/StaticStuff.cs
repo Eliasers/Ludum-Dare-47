@@ -18,4 +18,6 @@ public class StaticStuff
             return LayerMask.GetMask(new string[] { "Player", "NPC" });
         }
     }
+
+    public enum CharacterState { Moving, Attacking, Staggered }
 }
