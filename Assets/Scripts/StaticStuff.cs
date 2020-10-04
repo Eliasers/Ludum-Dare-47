@@ -15,7 +15,7 @@ public class StaticStuff
     {
         get
         {
-            return LayerMask.GetMask(new string[] { "Player", "NPC" });
+            return LayerMask.GetMask(new string[] { "Destructible" });
         }
     }
 

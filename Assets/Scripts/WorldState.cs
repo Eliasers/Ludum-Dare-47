@@ -36,7 +36,7 @@ public class WorldState : MonoBehaviour
         karma -= amount;
 
         if (supressNotification == false) {
-            KarmaIncrease.GetComponent<Animator>().SetTrigger("fadeIn");
+            KarmaDecrease.GetComponent<Animator>().SetTrigger("fadeIn");
         }
     }
 
@@ -46,6 +46,7 @@ public class WorldState : MonoBehaviour
         PlayerController player = GameObject.FindObjectOfType<PlayerController>();
 
         double progress = karma / karmaGoal;
+        Debug.Log("NEW progress: " + progress);
 
         for (int i = 0; i < dynamicObjs.Length; i++) {
             dynamicObjs[i].PassTime(progress);
