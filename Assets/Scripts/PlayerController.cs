@@ -12,14 +12,14 @@ public class PlayerController : MonoBehaviour
 
     bool grounded;
 
-    bool isAttacking;
     bool hasAttacked;
     float timeAttacking;
 
     float attackResolutionTime = 0.2f;
-    float attackRecoveryTime = 0.36f;
-    Vector2 attackOffset = new Vector2(0.7f, 0.7f);
+    float attackRecoveryTime = 0.6f;
+    Vector2 attackOffset = new Vector2(0.5f, 0.5f);
 
+    State state;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +31,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.OverlapCircle(transform.position, 0.25f, StaticStuff.SolidLayers) != null;
+        grounded = Physics2D.OverlapCircle(transform.position, 0.1f, StaticStuff.SolidLayers) != null;
         anim.SetBool("Grounded", grounded);
 
-        if (!isAttacking)
+        if (state == State.Moving)
         {
             float xMove = Input.GetAxis("Horizontal");
             anim.SetFloat("Abs X Move", Mathf.Abs(xMove));
@@ -51,11 +51,16 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1"))
             {
-                isAttacking = true;
+                state = State.Attacking;
+                anim.Play("playerAttack");
+                timeAttacking = 0;
+                hasAttacked = false;
             }
-        } else {
+        } else if (state == State.Attacking) {
             //Attack logic
             timeAttacking += Time.deltaTime;
+
+            rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
 
             if (timeAttacking >= attackResolutionTime)
             {
@@ -65,12 +70,12 @@ public class PlayerController : MonoBehaviour
                     ContactFilter2D cf = new ContactFilter2D();
                     cf.layerMask = StaticStuff.Hurtables;
                     cf.useLayerMask = true;
-                    Physics2D.OverlapCircle(transform.position, 0.1f, cf, r);
+                    Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.1f, cf, r);
                     for (int i = 0; i < r.Length; i++)
                     {
                         if (r[i] != null && r[i].gameObject != gameObject)
                         {
-                            Debug.Log(r[i].gameObject.name);
+                            Debug.Log("Hit " +  r[i].gameObject.name);
                             r[i].GetComponent<NPCController>().TakeDamage(gameObject, 1);
                         }
                     }
@@ -78,8 +83,14 @@ public class PlayerController : MonoBehaviour
 
                     hasAttacked = true;
                 }
+                
+                if (timeAttacking >= attackRecoveryTime){
+                    state = State.Moving;
+                }
             }
 
         }
     }
+
+    enum State { Moving, Attacking, Staggered }
 }
