@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
             heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             heldItem.GetComponent<Collider2D>().enabled = false;
             heldItem.transform.parent = transform;
-            heldItem.transform.localPosition = new Vector2(1, 1);
+            heldItem.transform.localPosition = new Vector2(0.6f, 1);
         }
     }
 

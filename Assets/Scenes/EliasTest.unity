@@ -676,23 +676,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: 3
-  textObjPrefab: {fileID: 0}
-  textYOffset: 2
+  textObjPrefab: {fileID: 4276190811689590358, guid: 05de7d0e3c65fde4788754c12c645cb8,
+    type: 3}
+  textYOffset: 2.4
   textXOffset: 0
   repeatLines: 0
-  fallBackLine: 
+  fallBackLine: Have you found any clockium? I still need some for my watch.
   voiceLines:
   - Heya there!
   - I'm making a watch.
   - Or, well, that's the idea...
   - You see, I don't have any clockium.
   - And as we all know, there is no hope for a watch to work without it...
-  - 
-  - 
-  - 
-  - 
-  - 
-  secondsPerLetter: 0.5
+  - If you happen upon any, won't you let me know? I would really like to know what
+    time it is.
+  secondsPerLetter: 0.2
 --- !u!114 &609434138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +704,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   age: 0
-  sprites: []
 --- !u!95 &609434139
 Animator:
   serializedVersion: 3

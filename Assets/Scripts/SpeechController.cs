@@ -43,9 +43,11 @@ public class SpeechController : MonoBehaviour
 
     private void Update() {
 
-        if (counter < 1) {
+        Debug.Log(counter);
 
-            anim.SetTrigger("Fade Out");
+        if (counter < 1) {
+            anim.SetBool("Fade Out", true);
+            anim.SetBool("Fade In", false);
 
             if (counter <= 0 && touchingPlayer && anim.GetCurrentAnimatorStateInfo(0).IsName("Empty")) {
                 if (voiceLines.Count > 0) {
@@ -65,7 +67,8 @@ public class SpeechController : MonoBehaviour
     }
 
     void DisplayLine() {
-        anim.SetTrigger("Fade In");
+        anim.SetBool("Fade In", true);
+        anim.SetBool("Fade Out", false);
         float length = Mathf.Clamp(text.text.Length, 5, 50);
         counter = (int)(length * secondsPerLetter);
         //anim.speed = 1 / (text.text.Length * (secondsPerLetter/3));
