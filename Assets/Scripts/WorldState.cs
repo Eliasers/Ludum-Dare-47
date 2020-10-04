@@ -10,15 +10,26 @@ public class WorldState : MonoBehaviour
 
     static double karma = 0;
 
-    public Text tx;
+    public Text KarmaIncrease, KarmaDecrease;
 
     bool[] flag = new bool[(int)flagID.NumberOfFlags];
+
+    private void Start() {
+        
+    }
 
     public void AddKarma(double amount, bool supressNotification = false) {
         karma += amount;
 
         if(supressNotification == false) {
-            tx.GetComponent<Animator>().SetTrigger("fadeIn");
+            KarmaIncrease.GetComponent<Animator>().SetTrigger("fadeIn");
+        }
+    }
+    public void RemoveKarma(double amount, bool supressNotification = false) {
+        karma -= amount;
+
+        if (supressNotification == false) {
+            KarmaIncrease.GetComponent<Animator>().SetTrigger("fadeIn");
             Debug.Log("klick");
         }
     }
