@@ -77,6 +77,7 @@ public class SpeechController : MonoBehaviour
             touchingPlayer = true;
 
             if (voiceLines.Count == 0) {
+                text.text = fallBackLine;
                 DisplayLine();
             }
         }
