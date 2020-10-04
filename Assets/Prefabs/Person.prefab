@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6759964470098758538
+--- !u!1 &3312298313069276628
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6759964469986286697}
-  - component: {fileID: 6759964470098758535}
-  - component: {fileID: 6759964470098758534}
-  - component: {fileID: 6759964470098758536}
-  - component: {fileID: 6759964470098758539}
-  - component: {fileID: 2789172717398930929}
-  m_Layer: 15
-  m_Name: Player
-  m_TagString: Player
+  - component: {fileID: 3312298313069276624}
+  - component: {fileID: 3312298313069276631}
+  - component: {fileID: 3312298313069276629}
+  - component: {fileID: 3312298313069276625}
+  - component: {fileID: 3312298313069276626}
+  - component: {fileID: 3312298313069276630}
+  - component: {fileID: 3312298313069276627}
+  m_Layer: 16
+  m_Name: Person
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6759964469986286697
+--- !u!4 &3312298313069276624
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759964470098758538}
+  m_GameObject: {fileID: 3312298313069276628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65, y: 0.99, z: 0}
+  m_LocalPosition: {x: 6.4675817, y: 2.6931593, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6759964470098758535
+--- !u!212 &3312298313069276631
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759964470098758538}
+  m_GameObject: {fileID: 3312298313069276628}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -54,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ddb1add43df019642b3b365a0d440689, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -4709456396536258026, guid: ac4fe8fc34425324989cda69a640f501,
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2256948484998397059, guid: 80261c35fd1d5984ebcc079e22a5b0b0,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,28 +88,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6759964470098758534
+--- !u!114 &3312298313069276629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759964470098758538}
+  m_GameObject: {fileID: 3312298313069276628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7c08def2e4bfd4098dc058f34f9267, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cdace320e0791340b6c02de5134db95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  jumpForce: 5
---- !u!50 &6759964470098758536
+  age: 1
+  sprites: []
+  species: 0
+  female: 0
+  mother: {fileID: 0}
+  father: {fileID: 0}
+  hairColor: {r: 0, g: 0, b: 0, a: 0}
+  skinColor: {r: 0, g: 0, b: 0, a: 0}
+  isDead: 0
+--- !u!114 &3312298313069276625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312298313069276628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2ea3df4a5c9e4b90091a687185200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trousers: {r: 0.3773585, g: 0.21717319, b: 0.11213955, a: 1}
+  shirt: {r: 0.6643081, g: 0.7075472, b: 0.5306604, a: 1}
+--- !u!50 &3312298313069276626
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759964470098758538}
+  m_GameObject: {fileID: 3312298313069276628}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -122,32 +144,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &6759964470098758539
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759964470098758538}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2de2482eb5187824abf6a6de461bd157, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &2789172717398930929
+--- !u!61 &3312298313069276630
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759964470098758538}
+  m_GameObject: {fileID: 3312298313069276628}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -167,3 +170,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1.611988}
   m_EdgeRadius: 0
+--- !u!114 &3312298313069276627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312298313069276628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cdace320e0791340b6c02de5134db95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  age: 0
+  sprites: []
+  species: 0
+  female: 0
+  mother: {fileID: 0}
+  father: {fileID: 0}
+  hairColor: {r: 0, g: 0, b: 0, a: 0}
+  skinColor: {r: 0, g: 0, b: 0, a: 0}
+  isDead: 0

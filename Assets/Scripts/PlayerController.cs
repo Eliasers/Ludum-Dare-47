@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     float attackResolutionTime = 0.2f;
     float attackRecoveryTime = 0.6f;
-    Vector2 attackOffset = new Vector2(0.5f, 0.5f);
+    Vector2 attackOffset = new Vector2(0.4f, 0.5f);
 
     State state;
 
@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.OverlapCircle(transform.position, 0.1f, StaticStuff.SolidLayers) != null;
+        grounded = Physics2D.OverlapArea((Vector2)transform.position + new Vector2(-0.2f, 0), (Vector2)transform.position + new Vector2(0.2f, -0.1f), StaticStuff.SolidLayers);
+            //(transform.position, 0.1f, StaticStuff.SolidLayers) != null;
         anim.SetBool("Grounded", grounded);
 
         if (state == State.Moving)
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
                     ContactFilter2D cf = new ContactFilter2D();
                     cf.layerMask = StaticStuff.Hurtables;
                     cf.useLayerMask = true;
-                    Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.1f, cf, r);
+                    Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.5f, cf, r);
                     for (int i = 0; i < r.Length; i++)
                     {
                         if (r[i] != null && r[i].gameObject != gameObject)
