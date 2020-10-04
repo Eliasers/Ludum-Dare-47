@@ -8,7 +8,7 @@ public class NPCController : DynamicObjectController {
 
     protected Animator anim;
 
-    private void Start() {
+    protected void Start() {
         anim = GetComponent<Animator>();
     }
 

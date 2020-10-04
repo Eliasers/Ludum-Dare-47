@@ -10,22 +10,30 @@ public class WorldState : MonoBehaviour
 
     static double karma = 0;
 
-    public Text KarmaIncrease, KarmaDecrease;
+    public GameObject KarmaIncrease, KarmaDecrease;
+
+    DynamicScenery[] dynamicObjs;
 
     bool[] flag = new bool[(int)flagID.NumberOfFlags];
 
     private void Start() {
-        
+        KarmaIncrease = GameObject.Find("KarmaUpText");
+        KarmaDecrease = GameObject.Find("KarmaDownText");
+
+        dynamicObjs = GameObject.FindObjectsOfType<DynamicScenery>();
     }
 
     public void AddKarma(double amount, bool supressNotification = false) {
+        Debug.Log("Karma increase");
         karma += amount;
 
         if(supressNotification == false) {
             KarmaIncrease.GetComponent<Animator>().SetTrigger("fadeIn");
         }
     }
+
     public void RemoveKarma(double amount, bool supressNotification = false) {
+        Debug.Log("Karma decrease");
         karma -= amount;
 
         if (supressNotification == false) {
@@ -34,7 +42,7 @@ public class WorldState : MonoBehaviour
         }
     }
 
-    private void Update() {
-        
+    public void PassTime() {
+
     }
 }
