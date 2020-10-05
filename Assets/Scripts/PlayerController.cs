@@ -109,6 +109,14 @@ public class PlayerController : MonoBehaviour
                                 if (r[i].CompareTag("Destructible")) {
                                     Destroy(r[i].gameObject);
                                 }
+
+                                //EXCEPTIONS
+                                if (r[i].name == "Mudman") {
+                                    BoyController boy = GameObject.Find("Boy").GetComponent<BoyController>();
+                                    Sprite destroyedMudman = boy.destroyedMudman;
+                                    r[i].GetComponent<SpriteRenderer>().sprite = destroyedMudman;
+                                    boy.MudmanDestroyed();
+                                }
                             }
                         }
 
