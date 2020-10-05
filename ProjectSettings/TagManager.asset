@@ -44,6 +44,9 @@ TagManager:
   - name: Parallax
     uniqueID: 4290821047
     locked: 0
+  - name: Background
+    uniqueID: 737510513
+    locked: 0
   - name: Prop
     uniqueID: 1978899825
     locked: 0
