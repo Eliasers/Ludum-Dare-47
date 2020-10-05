@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     AudioSource src;
 
-    AudioClip hit;
-    AudioClip step;
+    public AudioClip[] hit;
+    public AudioClip[] step;
+    float stepTimer;
 
     int health = 3;
 
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
     public float startTimeToLive = 250;
     public float timeToLive;
     public float timeDead;
-    public float timeDeadMax;
+    public float timeDeadMax = 3;
 
     bool isAlive = true;
 
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        src = GetComponent<AudioSource>();
 
 
         GameObject textObj = Instantiate(textObjPrefab, new Vector2(0, 2.4f), Quaternion.identity);
@@ -88,7 +90,16 @@ public class PlayerController : MonoBehaviour
 
                     rb.velocity = new Vector2(xMove * movementSpeed, rb.velocity.y);
 
-                    if (xMove != 0) { transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); }
+                    if (xMove != 0) { 
+                        transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); 
+                    
+                        if (stepTimer <= 0 && grounded) {
+                            PlaySound(step);
+                            stepTimer = 0.5f;
+                        }
+                    }
+                    stepTimer -= Time.deltaTime;
+
                     textHolder.transform.localScale = transform.localScale;
 
                     if (Input.GetButtonDown("Jump") && grounded) {
@@ -123,11 +134,12 @@ public class PlayerController : MonoBehaviour
                                 if (r[i] != null && r[i].gameObject != gameObject) {
                                     if (r[i].CompareTag("Destructible")) {
                                         Destroy(r[i].gameObject);
-
+                                        PlaySound(hit);
                                     }
 
                                     //EXCEPTIONS
                                     if (r[i].name == "Mudman") {
+                                        PlaySound(hit);
                                         BoyController boy = GameObject.Find("Boy").GetComponent<BoyController>();
                                         Sprite destroyedMudman = boy.destroyedMudman;
                                         r[i].GetComponent<SpriteRenderer>().sprite = destroyedMudman;
@@ -186,6 +198,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
 
             if (timeDead >= timeDeadMax) {
+                Debug.Log(timeDead + ", " + timeDeadMax);
                 isAlive = true;
                 transform.position = reincarnationPoint;
                 timeToLive = startTimeToLive;
@@ -266,7 +279,14 @@ public class PlayerController : MonoBehaviour
         timeDead = 0;
         health = 3;
 
-        if (skipDeath = true) timeDead = timeDeadMax;
+        if (skipDeath) timeDead = timeDeadMax;
+    }
+
+    void PlaySound (AudioClip[] clip) {
+        src.volume = 0.5f;
+        src.clip = clip[Random.Range(0, clip.Length-1)];
+        src.Play();
+        StartCoroutine(StaticStuff.StartFade(src, src.clip.length, 0));
     }
 
     enum State { Moving, Attacking, Staggered }

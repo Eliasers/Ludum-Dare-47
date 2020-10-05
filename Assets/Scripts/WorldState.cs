@@ -46,7 +46,7 @@ public class WorldState : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.U)) {
             Debug.Log("SKIP");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die(true);
         }
 
         if (Input.GetKeyDown(KeyCode.I)) {
