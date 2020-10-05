@@ -66,7 +66,7 @@ public class FarmerController : NPCController
             speech.fallBackLine = "This community would starve without me!";
         }
 
-        if (StaticStuff.Karma > 0) {
+        if (StaticStuff.Karma > 40) {
             speech.fallBackLine = "Ge' away from me 'fore oi make kebab outta' yer innards!";
         }
     }

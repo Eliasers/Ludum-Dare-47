@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class WorldState : MonoBehaviour
 {
-    enum flagID { LOL1, LOL22
-                , NumberOfFlags}
-
-    static float karma = 0;
+    static float karma = 50;
     float karmaGoal = 100;
 
     int age = 0;
@@ -32,8 +29,6 @@ public class WorldState : MonoBehaviour
         }
     }
 
-    bool[] flag = new bool[(int)flagID.NumberOfFlags];
-
     private void Start() {
 
         fog = GameObject.FindGameObjectWithTag("Fog");
@@ -44,6 +39,8 @@ public class WorldState : MonoBehaviour
         src = GetComponent<AudioSource>();
 
         plxRenderer = GameObject.Find("Parallax 1").GetComponent<SpriteRenderer>();
+
+        UpdateColors(karma/karmaGoal);
     }
 
     private void Update() {
@@ -90,6 +87,8 @@ public class WorldState : MonoBehaviour
     public void PassTime() {
         age++;
 
+        karma = Mathf.Clamp(karma, 0, 100);
+
         DynamicScenery[] dynamicObjs = GameObject.FindObjectsOfType<DynamicScenery>();
         NPCController[] NPCOBjs = GameObject.FindObjectsOfType<NPCController>();
         PlayerController player = GameObject.FindObjectOfType<PlayerController>();
@@ -112,14 +111,7 @@ public class WorldState : MonoBehaviour
             NPCOBjs[i].PassTime();
         }
 
-        float val;
-
-        if (karma < 0) {
-            val = karmaGoal / -karma;
-
-        } else val = 1;
-
-        plxRenderer.color = Color.Lerp(Color.black, Color.white, val);
+        UpdateColors(progress);
 
         /*
         if (karma <= 0) {
@@ -133,5 +125,14 @@ public class WorldState : MonoBehaviour
         } else if (karma <= 70) {
             musicPlayer.clip = music[3];
         }*/
+    }
+
+    void UpdateColors(float progress) {
+        plxRenderer.color = Color.Lerp(new Color(0.1f, 0.1f, 0.1f), Color.white, progress);
+
+        Color a = new Color(65f / 255f, 89f / 255f, 72f / 255f);
+        Color b = new Color(83f / 255f, 181f / 255f, 207f / 255f);
+        Color bc = Color.Lerp(a, b, progress);
+        Camera.main.backgroundColor = bc;
     }
 }

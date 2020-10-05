@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
     public float timeDead;
     public float timeDeadMax = 3;
 
-    bool isAlive = true;
+    public bool isAlive = true;
 
     public Vector2 reincarnationPoint;
 
@@ -283,12 +283,12 @@ public class PlayerController : MonoBehaviour {
 
     public void Die(bool skipDeath = false) {
         isAlive = false;
-        anim.Play("playerDie");
         timeToLive = startTimeToLive;
         timeDead = 0;
         health = 3;
 
         if (skipDeath) timeDead = timeDeadMax;
+        else anim.Play("playerDie");
     }
 
     void PlaySound(AudioClip[] clip) {

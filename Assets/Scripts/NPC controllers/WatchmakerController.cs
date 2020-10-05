@@ -43,7 +43,7 @@ public class WatchmakerController : NPCController
                 speech.voiceLines = new List<string>();
             }
 
-            if (StaticStuff.Karma < 0) {
+            if (StaticStuff.Karma < 50) {
                 if (!sick) {
                     sick = true;
                     if (!hasClockium) {

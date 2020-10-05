@@ -8,6 +8,8 @@ public class MinerController : NPCController
 
     bool isStuck = true;
 
+    public GameObject excavatedStuff;
+
     protected override void Start() {
         base.Start();
     }
@@ -41,6 +43,8 @@ public class MinerController : NPCController
             anim.SetTrigger("Sit");
             speech.fallBackLine = "Man I'm tired";
             //speech.voiceLines.Add("Thank you kind sir!");
+
+            excavatedStuff.SetActive(true);
         }
     }
 
