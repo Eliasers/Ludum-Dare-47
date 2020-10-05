@@ -40,13 +40,14 @@ public class WomanController : NPCController
                 canonAudio.clip = canonFire;
                 canonAudio.Play();
                 canonBoom = true;
+                Instantiate(smokeEffect, canon.transform.position + new Vector3(-2.4f, 0.1f), Quaternion.identity);
                 canon.GetComponent<Animator>().SetTrigger("Reset");
+
 
                 Vector3 playerPos = GameObject.Find("Player").transform.position;
                 //Ah shit he dead
                 if (transform.position.x < playerPos.x && playerPos.x < canon.transform.position.x && Mathf.Abs(playerPos.y - transform.position.y) < 4) {
                     GameObject.Find("Player").GetComponent<PlayerController>().Die();
-                    Instantiate(smokeEffect, canon.transform.position + new Vector3(-2.4f, 0.1f), Quaternion.identity);
                     speech.voiceLines = new List<string> { "Good Heavens!" };
                     ResetSpeech();
                     StaticStuff.AddKarma(10);
