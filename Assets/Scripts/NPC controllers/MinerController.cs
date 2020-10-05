@@ -10,7 +10,6 @@ public class MinerController : NPCController
 
     protected override void Start() {
         base.Start();
-        anim.speed = 0;
     }
 
     public override void PassTime()
@@ -50,6 +49,7 @@ public class MinerController : NPCController
             anim.SetTrigger("StandUp");
             speech.fallBackLine = "I'll always be in your debt!";
             speech.voiceLines.Add("Thank you kind sir!");
+            ResetSpeech();
             StaticStuff.AddKarma(10);
             isStuck = false;
         }
