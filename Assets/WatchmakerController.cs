@@ -9,6 +9,8 @@ public class WatchmakerController : NPCController
 
     bool sick;
 
+    public GameObject clockUIPrefab;
+
     private void Start() {
         base.Start();
         sc = GetComponent<SpeechController>();
@@ -34,6 +36,10 @@ public class WatchmakerController : NPCController
 
     public override void PassTime() {
         base.PassTime();
+        if (hasClockium) {
+            Instantiate(clockUIPrefab);
+        }
+
         if (StaticStuff.Karma < 0) {
             if (!sick) {
                 sick = true;

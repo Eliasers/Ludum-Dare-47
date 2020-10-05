@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
                     if (!hasAttacked) {
                         Collider2D[] r = new Collider2D[5];
                         ContactFilter2D cf = new ContactFilter2D();
-                        cf.layerMask = StaticStuff.Hurtables;
+                        cf.layerMask = StaticStuff.Destructibles;
                         cf.useLayerMask = true;
                         Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.25f, cf, r);
                         for (int i = 0; i < r.Length; i++) {

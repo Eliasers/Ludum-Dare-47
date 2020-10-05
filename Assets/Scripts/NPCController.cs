@@ -38,6 +38,7 @@ public class NPCController : DynamicObjectController {
 
     public virtual void Die() {
         Destroy(speech);
+        Destroy(GetComponent<CircleCollider2D>());
         isAlive = false;
         anim.SetBool("Is Alive", false);
     }

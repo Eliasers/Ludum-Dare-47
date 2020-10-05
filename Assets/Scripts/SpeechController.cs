@@ -86,4 +86,6 @@ public class SpeechController : MonoBehaviour
             touchingPlayer = false;
         }
     }
+
+
 }
