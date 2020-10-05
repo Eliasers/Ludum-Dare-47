@@ -45,17 +45,8 @@ public class WorldState : MonoBehaviour
 
     private void Update() {
 
-        if (Input.GetKeyDown(KeyCode.U)) {
-            Debug.Log("SKIP");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die();
-        }
-
-        if (Input.GetKeyDown(KeyCode.I)) {
-            AddKarma(10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.O)) {
-            RemoveKarma(10);
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
         }
     }
 
