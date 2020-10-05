@@ -40,7 +40,9 @@ public class NPCController : DynamicObjectController {
         Destroy(speech);
         Destroy(GetComponent<CircleCollider2D>());
         isAlive = false;
-        anim.SetBool("Is Alive", false);
         Destroy(transform.GetChild(0).gameObject);
+
+        Destroy(anim);
+        spr.sprite = corpse;
     }
 }
