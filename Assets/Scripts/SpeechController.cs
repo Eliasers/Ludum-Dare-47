@@ -87,7 +87,7 @@ public class SpeechController : MonoBehaviour
     }
 
     public void Clear() {
-        voiceLines = new List<string>();
+        voiceLines.Clear();
     }
 
 }

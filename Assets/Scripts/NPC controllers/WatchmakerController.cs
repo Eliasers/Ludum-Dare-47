@@ -38,6 +38,8 @@ public class WatchmakerController : NPCController
         base.PassTime();
 
         if (isAlive) {
+            speech.Clear();
+
             if (hasClockium) {
                 Instantiate(clockUIPrefab).GetComponent<Canvas>().worldCamera = Camera.main;
                 speech.voiceLines = new List<string>();

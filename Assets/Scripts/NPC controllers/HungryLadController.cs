@@ -57,11 +57,11 @@ public class HungryLadController : NPCController
         }   else {
             speech.Clear();
             if (StaticStuff.Karma < 20) {
-                speech.fallBackLine = "Da rottin' remains o' my comrades fertilize da soil, hehe.";
+                speech.fallBackLine = "Begone, stranger. There is naught but suffering here.";
             } else if (StaticStuff.Karma < 40) {
-                speech.fallBackLine = "Ge' away from me, outsider, 'fore oi make kebab outta' yer innards!";
+                speech.fallBackLine = "'Tis a grim place you encroach upon, stranger.";
             } else {
-                speech.fallBackLine = "'ello, stranger! If you're peckish 'round 'ere, oi'm da guy you're lookin fer.";
+                speech.fallBackLine = "Hello there, sir! Welcome to our community.";
             }
         }
     }
