@@ -30,7 +30,6 @@ public class StaticStuff
     }
 
     public static void AddKarma(float amount) {
-        Debug.Log(GameObject.FindObjectOfType<WorldState>() == null);
         GameObject.FindObjectOfType<WorldState>().AddKarma(amount);
     }
 
@@ -39,5 +38,17 @@ public class StaticStuff
         GameObject.FindObjectOfType<WorldState>().PassTime();
     }
 
-    public enum CharacterState { Moving, Attacking, Staggered }
+    public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume) {
+        float currentTime = 0;
+        float start = audioSource.volume;
+
+        while (currentTime < duration) {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
+    }
+
+public enum CharacterState { Moving, Attacking, Staggered }
 }

@@ -21,6 +21,9 @@ public class WorldState : MonoBehaviour
     public AudioClip di;
     public AudioClip happy;
 
+    //public AudioClip[] music;
+    //public AudioSource musicPlayer;
+
     public double Karma {
         get {
             return karma;
@@ -43,7 +46,7 @@ public class WorldState : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.U)) {
             Debug.Log("SKIP");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die(true);
         }
 
         if (Input.GetKeyDown(KeyCode.I)) {
@@ -104,5 +107,18 @@ public class WorldState : MonoBehaviour
         for (int i = 0; i < NPCOBjs.Length; i++) {
             NPCOBjs[i].PassTime();
         }
+
+        /*
+        if (karma <= 0) {
+            musicPlayer.clip = null;
+        } else if (karma <= 10) {
+            musicPlayer.clip = music[0];
+        } else if (karma <= 30) {
+            musicPlayer.clip = music[1];
+        } else if (karma <= 50) {
+            musicPlayer.clip = music[2];
+        } else if (karma <= 70) {
+            musicPlayer.clip = music[3];
+        }*/
     }
 }

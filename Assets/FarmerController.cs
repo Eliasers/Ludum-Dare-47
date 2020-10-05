@@ -11,6 +11,7 @@ public class FarmerController : NPCController
 
     bool rocksGone;
     bool gotToPlanting;
+    bool finished;
 
     Vector2 vibingSpot;
     Vector2[] farmingSpots;
@@ -46,6 +47,14 @@ public class FarmerController : NPCController
             gotToPlanting = true;
             transform.position = farmingSpots[1];
             anim.Play("farmerFarm");
+            speech.voiceLines = new List<string> { "This'll be a jolly good chowbeet field, just you wait!" };
+            speech.fallBackLine = "*whistling*";
+
+        }
+
+        if (gotToPlanting && !finished) {
+            finished = true;
+            transform.position = vibingSpot;
         }
     }
 }
