@@ -20,7 +20,7 @@ public class SpeechController : MonoBehaviour
     public List<string> voiceLines;
 
     bool touchingPlayer;
-    float counter;
+    public float counter;
     public float secondsPerLetter = 0.2f;
 
     private void Awake() {
@@ -74,9 +74,8 @@ public class SpeechController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) {
             touchingPlayer = true;
 
-            if (voiceLines.Count == 0) {
-                text.text = fallBackLine;
-                DisplayLine();
+            if (voiceLines.Count == 0 && !repeatLines) {
+                voiceLines.Add(fallBackLine);
             }
         }
     }

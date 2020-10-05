@@ -34,6 +34,7 @@ public class NPCController : DynamicObjectController {
 
     public override void PassTime() {
         base.PassTime();
+        ResetSpeech();
     }
 
     public virtual void Die() {
@@ -44,5 +45,9 @@ public class NPCController : DynamicObjectController {
 
         Destroy(anim);
         spr.sprite = corpse;
+    }
+
+    protected void ResetSpeech() {
+        speech.counter = 0;
     }
 }

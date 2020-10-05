@@ -35,6 +35,7 @@ public class FarmerController : NPCController
             rocksGone = true;
             speech.voiceLines = new List<string> { "You krumped them rocks? That's roight bloody sweet of ya!", "Oi'll get roight ta plantin'!" };
             speech.fallBackLine = "Stop buggin' me! Oi'm right 'boutta get ta work, oi am!";
+            ResetSpeech();
         }
     }
 

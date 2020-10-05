@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
                             ContactFilter2D cf = new ContactFilter2D();
                             cf.layerMask = StaticStuff.Destructibles;
                             cf.useLayerMask = true;
-                            Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.25f, cf, r);
+                            Physics2D.OverlapCircle(new Vector2(transform.position.x + attackOffset.x * transform.localScale.x, transform.position.y + attackOffset.y), 0.25f, cf, r);
                             for (int i = 0; i < r.Length; i++) {
                                 if (r[i] != null && r[i].gameObject != gameObject) {
                                     if (r[i].CompareTag("Destructible")) {

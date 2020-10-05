@@ -50,11 +50,11 @@ TagManager:
   - name: NPC
     uniqueID: 1926590057
     locked: 0
-  - name: Player
-    uniqueID: 3909127751
-    locked: 0
   - name: Item
     uniqueID: 444741925
+    locked: 0
+  - name: Player
+    uniqueID: 3909127751
     locked: 0
   - name: Terrain
     uniqueID: 1195930105
