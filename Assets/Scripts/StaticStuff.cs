@@ -11,7 +11,7 @@ public class StaticStuff
             return LayerMask.GetMask(new string[] { "Terrain" });
         }
     }
-    public static LayerMask Hurtables
+    public static LayerMask Destructibles
     {
         get
         {
