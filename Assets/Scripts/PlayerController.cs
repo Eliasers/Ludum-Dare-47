@@ -132,11 +132,9 @@ public class PlayerController : MonoBehaviour
 
                                 hasAttacked = true;
                             }
-
-                            if (timeAttacking >= attackRecoveryTime) {
-                                state = State.Moving;
-                            }
                         }
+
+                        if (timeAttacking >= attackRecoveryTime) state = State.Moving;
                     }
                     break;
                 case State.Staggered:
