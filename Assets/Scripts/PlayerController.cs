@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     float attackResolutionTime = 0.2f;
     float attackRecoveryTime = 0.6f;
-    Vector2 attackOffset = new Vector2(0.4f, 0.5f);
+    Vector2 attackOffset = new Vector2(0.5f, 0.5f);
 
     float timeStaggered;
 
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 
     public bool isAlive = true;
 
-    public Vector2 reincarnationPoint;
+    Vector2 reincarnationPoint;
 
     // Start is called before the first frame update
     void Start() {
@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour {
         tAnim = textObj.GetComponent<Animator>();
 
         text = textObj.GetComponent<TextMeshPro>();
+
+        reincarnationPoint = transform.position;
 
         timeToLive = startTimeToLive;
     }
@@ -175,6 +177,7 @@ public class PlayerController : MonoBehaviour {
                     }
                     break;
                 case State.Sleeping:
+                    rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
                     break;
                 default:
                     break;

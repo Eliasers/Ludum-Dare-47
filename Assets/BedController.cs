@@ -32,6 +32,7 @@ public class BedController : MonoBehaviour {
             youDiedUI = Instantiate(youDiedPrefab);
             player.GetComponent<PlayerController>().state = PlayerController.State.Sleeping;
             player.transform.position = (Vector2)transform.localPosition + Vector2.up * 0.39f + (Vector2)transform.parent.position;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             player.GetComponent<Animator>().Play("playerDead");
         }
         

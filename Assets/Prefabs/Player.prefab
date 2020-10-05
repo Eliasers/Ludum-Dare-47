@@ -142,15 +142,16 @@ MonoBehaviour:
   step:
   - {fileID: 8300000, guid: fc029e765594d9d4292c063f2a8db002, type: 3}
   - {fileID: 8300000, guid: e89c7e9c620d62c4ca76deefa198e997, type: 3}
+  state: 0
   textObjPrefab: {fileID: 4276190811689590358, guid: 05de7d0e3c65fde4788754c12c645cb8,
     type: 3}
   voiceLines: []
   secondsPerLetter: 0.2
-  startTimeToLive: 250
+  startTimeToLive: 100
   timeToLive: 0
   timeDead: 0
   timeDeadMax: 3
-  reincarnationPoint: {x: -1.64, y: 1.38}
+  isAlive: 1
 --- !u!50 &6759964470098758536
 Rigidbody2D:
   serializedVersion: 4
