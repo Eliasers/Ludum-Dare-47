@@ -54,6 +54,15 @@ public class HungryLadController : NPCController
                 default:
                     break;
             }
+        }   else {
+            speech.Clear();
+            if (StaticStuff.Karma < 20) {
+                speech.fallBackLine = "Da rottin' remains o' my comrades fertilize da soil, hehe.";
+            } else if (StaticStuff.Karma < 40) {
+                speech.fallBackLine = "Ge' away from me, outsider, 'fore oi make kebab outta' yer innards!";
+            } else {
+                speech.fallBackLine = "'ello, stranger! If you're peckish 'round 'ere, oi'm da guy you're lookin fer.";
+            }
         }
     }
 }

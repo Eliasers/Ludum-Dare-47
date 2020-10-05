@@ -73,10 +73,17 @@ public class FarmerController : NPCController
             anim.Play("farmerIdle");
             speech.voiceLines = new List<string> { "Feast your eyes upon my magnificent field o' beets!", "Oi'd offa' some to the fella' who 'elped me out, but they unfortunately passed away recently. *sniff*", "Ya know, you remind me uv 'em, a bit. 'ave a beet or two, if ya loik. It's on me." };
             speech.fallBackLine = "This community would starve without me!";
+        } else {
+            speech.Clear();
+            if (StaticStuff.Karma < 20) {
+                speech.fallBackLine = "Da rottin' remains o' my comrades fertilize da soil, hehe.";
+            } else if (StaticStuff.Karma < 40) {
+                speech.fallBackLine = "Ge' away from me, outsider, 'fore oi make kebab outta' yer innards!";
+            } else {
+                speech.fallBackLine = "'ello, stranger! If you're peckish 'round 'ere, oi'm da guy you're lookin fer.";
+            }
         }
 
-        if (StaticStuff.Karma > 40) {
-            speech.fallBackLine = "Ge' away from me 'fore oi make kebab outta' yer innards!";
-        }
+        
     }
 }
