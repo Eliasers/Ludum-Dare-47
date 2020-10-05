@@ -30,7 +30,6 @@ public class StaticStuff
     }
 
     public static void AddKarma(float amount) {
-        Debug.Log(GameObject.FindObjectOfType<WorldState>() == null);
         GameObject.FindObjectOfType<WorldState>().AddKarma(amount);
     }
 

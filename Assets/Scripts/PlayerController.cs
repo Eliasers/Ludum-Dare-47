@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     
     Rigidbody2D rb;
     Animator anim;
+    AudioSource src;
+
+    AudioClip hit;
+    AudioClip step;
 
     int health = 3;
 
@@ -119,6 +123,7 @@ public class PlayerController : MonoBehaviour
                                 if (r[i] != null && r[i].gameObject != gameObject) {
                                     if (r[i].CompareTag("Destructible")) {
                                         Destroy(r[i].gameObject);
+
                                     }
 
                                     //EXCEPTIONS
