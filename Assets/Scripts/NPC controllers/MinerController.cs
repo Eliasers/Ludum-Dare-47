@@ -35,7 +35,7 @@ public class MinerController : NPCController
         
         //Working
         if (isAlive && age == 1) {
-            transform.position = new Vector3(15.8f, 2, 0);
+            transform.position = new Vector3(19.5f, -0.4f, 0);
             anim.SetTrigger("Mine");
             speech.fallBackLine = "Work Work Work";
             speech.voiceLines.Add("What have you done for the world recently?");
@@ -49,14 +49,13 @@ public class MinerController : NPCController
             transform.position = new Vector3(16, -2, 0);
             anim.SetTrigger("Sit");
             speech.fallBackLine = "Man I'm tired";
-            speech.voiceLines.Add("Thank you kind sir!");
+            //speech.voiceLines.Add("Thank you kind sir!");
         }
     }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.U)) {
             Debug.Log("SKIP");
-            PassTime();
             FindObjectOfType<WorldState>().AddKarma(5);
             FindObjectOfType<WorldState>().PassTime();
         }
