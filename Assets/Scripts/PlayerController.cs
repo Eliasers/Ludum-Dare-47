@@ -142,12 +142,16 @@ public class PlayerController : MonoBehaviour {
                                     }
 
                                     //EXCEPTIONS
-                                    if (r[i].name == "Mudman") {
-                                        PlaySound(hit);
-                                        BoyController boy = GameObject.Find("Boy").GetComponent<BoyController>();
-                                        Sprite destroyedMudman = boy.destroyedMudman;
-                                        r[i].GetComponent<SpriteRenderer>().sprite = destroyedMudman;
-                                        boy.MudmanDestroyed();
+                                    try {
+                                        if (r[i].name == "Mudman") {
+                                            PlaySound(hit);
+                                            BoyController boy = GameObject.Find("Boy").GetComponent<BoyController>();
+                                            Sprite destroyedMudman = boy.destroyedMudman;
+                                            r[i].GetComponent<SpriteRenderer>().sprite = destroyedMudman;
+                                            boy.MudmanDestroyed();
+                                        }
+                                    } catch {
+                                        //Nothing
                                     }
                                 }
 
