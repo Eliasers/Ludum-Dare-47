@@ -11,6 +11,8 @@ public class DynamicScenery : DynamicObjectController
 
     private void Start() {
         spr = GetComponent<SpriteRenderer>();
+        if (UnityEngine.Random.Range(0, 1) > 0.5f) spr.flipX = true;
+        else spr.flipX = false;
     }
 
     public void PassTime(double karmaProgress) {

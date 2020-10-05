@@ -60,6 +60,7 @@ public class MinerController : NPCController
 
         if (waitingToRevealDeath && Vector2.Distance(player.transform.position, transform.position) > 8){
             StaticStuff.RemoveKarma(10);
+            waitingToRevealDeath = false;
         }
     }
 }
