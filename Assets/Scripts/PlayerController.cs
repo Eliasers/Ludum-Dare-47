@@ -4,11 +4,10 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
     public float movementSpeed;
     public float jumpForce;
-    
+
     Rigidbody2D rb;
     Animator anim;
     AudioSource src;
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
     float speechCounter;
     public float secondsPerLetter = 0.2f;
 
-    public float startTimeToLive = 250;
+    public float startTimeToLive = 100;
     public float timeToLive;
     public float timeDead;
     public float timeDeadMax = 3;
@@ -57,8 +56,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 reincarnationPoint;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         textHolder = transform.GetChild(0);
 
         rb = GetComponent<Rigidbody2D>();
@@ -77,8 +75,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         grounded = Physics2D.OverlapArea((Vector2)transform.position + new Vector2(-0.1f, 0), (Vector2)transform.position + new Vector2(0.1f, -0.1f), StaticStuff.SolidLayers);
         anim.SetBool("Grounded", grounded);
 
@@ -90,9 +87,9 @@ public class PlayerController : MonoBehaviour
 
                     rb.velocity = new Vector2(xMove * movementSpeed, rb.velocity.y);
 
-                    if (xMove != 0) { 
-                        transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); 
-                    
+                    if (xMove != 0) {
+                        transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1);
+
                         if (stepTimer <= 0 && grounded) {
                             PlaySound(step);
                             stepTimer = 0.5f;
@@ -113,15 +110,20 @@ public class PlayerController : MonoBehaviour
                         hasAttacked = false;
                     }
 
-                if (Input.GetButtonDown("PickUp")) {
-                    PickUp();
-                }
-                break;
-            case State.Attacking:
-                //Attack logic
-                timeAttacking += Time.deltaTime;
+                    if (Input.GetButtonDown("PickUp")) {
+                        PickUp();
+                    }
 
-                rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
+                    if (Input.GetKeyDown(KeyCode.G)) {
+                        state = State.Grooving;
+                        anim.Play("playerGroove");
+                    }
+                    break;
+                case State.Attacking:
+                    //Attack logic
+                    timeAttacking += Time.deltaTime;
+
+                    rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
 
                     if (timeAttacking >= attackResolutionTime) {
                         if (!hasAttacked) {
@@ -162,6 +164,14 @@ public class PlayerController : MonoBehaviour
 
                     if (timeStaggered > 0.4f) {
                         state = State.Moving;
+                    }
+                    break;
+                case State.Grooving:
+                    rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
+
+                    if (Input.GetKeyUp(KeyCode.G)) {
+                        state = State.Moving;
+                        anim.Play("playerIdle");
                     }
                     break;
                 default:
@@ -281,12 +291,12 @@ public class PlayerController : MonoBehaviour
         if (skipDeath) timeDead = timeDeadMax;
     }
 
-    void PlaySound (AudioClip[] clip) {
+    void PlaySound(AudioClip[] clip) {
         src.volume = 0.5f;
-        src.clip = clip[Random.Range(0, clip.Length-1)];
+        src.clip = clip[Random.Range(0, clip.Length - 1)];
         src.Play();
         StartCoroutine(StaticStuff.StartFade(src, src.clip.length, 0));
     }
 
-    enum State { Moving, Attacking, Staggered }
+    enum State { Moving, Attacking, Staggered, Grooving }
 }

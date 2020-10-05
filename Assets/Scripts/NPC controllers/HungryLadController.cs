@@ -34,7 +34,7 @@ public class HungryLadController : NPCController
 
     public override void PassTime() {
         base.PassTime();
-        if (hungry) {
+        if (hungry && isAlive) {
             switch (age) {
                 case 1:
                     speech.voiceLines = new List<string> { "Hmm... I'm peckish, got a snack to share?" };

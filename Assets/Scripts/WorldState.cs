@@ -21,6 +21,8 @@ public class WorldState : MonoBehaviour
     public AudioClip di;
     public AudioClip happy;
 
+    SpriteRenderer plxRenderer;
+
     //public AudioClip[] music;
     //public AudioSource musicPlayer;
 
@@ -40,13 +42,15 @@ public class WorldState : MonoBehaviour
         KarmaDecrease = GameObject.Find("KarmaDownText");
 
         src = GetComponent<AudioSource>();
+
+        plxRenderer = GameObject.Find("Parallax 1").GetComponent<SpriteRenderer>();
     }
 
     private void Update() {
 
         if (Input.GetKeyDown(KeyCode.U)) {
             Debug.Log("SKIP");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die(true);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die();
         }
 
         if (Input.GetKeyDown(KeyCode.I)) {
@@ -107,6 +111,15 @@ public class WorldState : MonoBehaviour
         for (int i = 0; i < NPCOBjs.Length; i++) {
             NPCOBjs[i].PassTime();
         }
+
+        float val;
+
+        if (karma < 0) {
+            val = karmaGoal / -karma;
+
+        } else val = 1;
+
+        plxRenderer.color = Color.Lerp(Color.black, Color.white, val);
 
         /*
         if (karma <= 0) {
