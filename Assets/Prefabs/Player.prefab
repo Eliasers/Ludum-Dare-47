@@ -106,7 +106,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -385839545
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 1
   m_Sprite: {fileID: -2311659948842064771, guid: ac4fe8fc34425324989cda69a640f501,
     type: 3}
@@ -150,7 +150,7 @@ MonoBehaviour:
   startTimeToLive: 100
   timeToLive: 0
   timeDead: 0
-  timeDeadMax: 3
+  timeDeadMax: 4
   isAlive: 1
 --- !u!50 &6759964470098758536
 Rigidbody2D:

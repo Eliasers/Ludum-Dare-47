@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
     public float startTimeToLive = 100;
     public float timeToLive;
     public float timeDead;
-    public float timeDeadMax = 3;
+    public float timeDeadMax = 4;
 
     public bool isAlive = true;
 
