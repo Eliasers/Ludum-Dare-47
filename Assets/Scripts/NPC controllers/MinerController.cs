@@ -53,7 +53,7 @@ public class MinerController : NPCController
         if (isAlive && isStuck && rock == null) {
             anim.SetTrigger("StandUp");
             speech.fallBackLine = "I'll always be in your debt!";
-            speech.voiceLines.Add("Thank you kind sir!");
+            speech.voiceLines = new List<string> { "Thank you kind sir!" };
             ResetSpeech();
             StaticStuff.AddKarma(10);
             isStuck = false;

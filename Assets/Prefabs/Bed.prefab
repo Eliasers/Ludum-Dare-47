@@ -228,6 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f48f26716d1d54d8c6bc18d30b89b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathTime: 6
+  deathTime: 5
   youDiedPrefab: {fileID: 5224516394495085834, guid: 2102b6c9c7b6b0948a040f9c4f7d0b0e,
     type: 3}

@@ -22,7 +22,7 @@ public class FarmerController : NPCController
     protected override void Start()
     {
         base.Start();
-        speech.voiceLines = new List<string> { "This roight 'ere would make a dandy spot to plant me some chowbeets...", "...if it weren't for all these bloody rocks!"};
+        speech.voiceLines = new List<string> { "This roight 'ere would make a dandy spot to grow some wheat, and a couple o' chowbeets, why not...", "...if it weren't for all these bloody rocks!"};
         speech.fallBackLine = "Darned rocks...";
 
         vibingSpot = transform.position;
@@ -37,7 +37,7 @@ public class FarmerController : NPCController
         if (!rocksGone && rock1 == null && rock2 == null && rock3 == null) {
             rocksGone = true;
             StaticStuff.AddKarma(10);
-            speech.voiceLines = new List<string> { "You krumped them rocks? That's roight bloody sweet of ya!", "Oi'll get roight ta plantin'!" };
+            speech.voiceLines = new List<string> { "You krumped dem rocks? That's roight bloody sweet uv ya!", "Oi'll get roight ta plantin'!" };
             speech.fallBackLine = "Stop buggerin' me! Oi'm right 'boutta get ta work, oi am!";
             ResetSpeech();
         }
@@ -50,7 +50,7 @@ public class FarmerController : NPCController
             gotToPlanting = true;
             transform.position = farmingSpots[1];
             anim.Play("farmerFarm");
-            speech.voiceLines = new List<string> { "This'll be a jolly good chowbeet field, just you wait!" };
+            speech.voiceLines = new List<string> { "This'll be a jolly good chowbeet and wheat field, just you wait!" };
             speech.fallBackLine = "*whistling*";
 
         } else if (gotToPlanting && !finished) {
@@ -62,7 +62,7 @@ public class FarmerController : NPCController
 
             transform.position = vibingSpot;
             anim.Play("farmerIdle");
-            speech.voiceLines = new List<string> { "Feast your eyes upon my magnificent field o' beets!", "Oi'd offa' some to the fella' who 'elped me out, but they unfortunately passed away recently. *sniff*", "Ya know, you remind me o' 'em, a bit. 'ave a beet or two, if ya loik. It's on me." };
+            speech.voiceLines = new List<string> { "Feast your eyes upon my magnificent field o' beets!", "Oi'd offa' some to the fella' who 'elped me out, but they unfortunately passed away recently. *sniff*", "Ya know, you remind me uv 'em, a bit. 'ave a beet or two, if ya loik. It's on me." };
             speech.fallBackLine = "This community would starve without me!";
         }
 
