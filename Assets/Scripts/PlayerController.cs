@@ -97,26 +97,35 @@ public class PlayerController : MonoBehaviour
                         hasAttacked = false;
                     }
 
-                    if (Input.GetButtonDown("PickUp")) {
-                        PickUp();
-                    }
-                    break;
-                case State.Attacking:
-                    //Attack logic
-                    timeAttacking += Time.deltaTime;
+                if (Input.GetButtonDown("PickUp")) {
+                    PickUp();
+                }
+                break;
+            case State.Attacking:
+                //Attack logic
+                timeAttacking += Time.deltaTime;
 
-                    rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
+                rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
 
-                    if (timeAttacking >= attackResolutionTime) {
-                        if (!hasAttacked) {
-                            Collider2D[] r = new Collider2D[5];
-                            ContactFilter2D cf = new ContactFilter2D();
-                            cf.layerMask = StaticStuff.Destructibles;
-                            cf.useLayerMask = true;
-                            Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.25f, cf, r);
-                            for (int i = 0; i < r.Length; i++) {
-                                if (r[i] != null && r[i].gameObject != gameObject) {
+                if (timeAttacking >= attackResolutionTime) {
+                    if (!hasAttacked) {
+                        Collider2D[] r = new Collider2D[5];
+                        ContactFilter2D cf = new ContactFilter2D();
+                        cf.layerMask = StaticStuff.Destructibles;
+                        cf.useLayerMask = true;
+                        Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.25f, cf, r);
+                        for (int i = 0; i < r.Length; i++) {
+                            if (r[i] != null && r[i].gameObject != gameObject) {
+                                if (r[i].CompareTag("Destructible")) {
                                     Destroy(r[i].gameObject);
+                                }
+
+                                //EXCEPTIONS
+                                if (r[i].name == "Mudman") {
+                                    BoyController boy = GameObject.Find("Boy").GetComponent<BoyController>();
+                                    Sprite destroyedMudman = boy.destroyedMudman;
+                                    r[i].GetComponent<SpriteRenderer>().sprite = destroyedMudman;
+                                    boy.MudmanDestroyed();
                                 }
                             }
 

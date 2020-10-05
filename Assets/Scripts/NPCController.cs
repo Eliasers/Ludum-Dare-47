@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEditor;
+using Unity.Mathematics;
 
 public class NPCController : DynamicObjectController {
 
     protected Animator anim;
     protected GameObject player;
     protected SpeechController speech;
+    protected SpriteRenderer spr;
+    public Sprite corpse;
 
     protected bool isAlive = true;
 
@@ -19,6 +22,7 @@ public class NPCController : DynamicObjectController {
         player = GameObject.FindGameObjectWithTag("Player");
 
         speech = GetComponent<SpeechController>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
     protected virtual void Update() {
@@ -32,7 +36,7 @@ public class NPCController : DynamicObjectController {
         base.PassTime();
     }
 
-    public void Die() {
+    public virtual void Die() {
         Destroy(speech);
         Destroy(GetComponent<CircleCollider2D>());
         isAlive = false;

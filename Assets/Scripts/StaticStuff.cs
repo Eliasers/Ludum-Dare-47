@@ -15,7 +15,7 @@ public class StaticStuff
     {
         get
         {
-            return LayerMask.GetMask(new string[] { "Destructible" });
+            return LayerMask.GetMask(new string[] { "Destructible", "DestructibleNoCollision" });
         }
     }
 

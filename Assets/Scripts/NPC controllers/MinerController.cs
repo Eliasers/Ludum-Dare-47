@@ -7,9 +7,11 @@ public class MinerController : NPCController
     public GameObject rock;
 
     bool isStuck = true;
+    bool waitingToRevealDeath;
 
     protected override void Start() {
         base.Start();
+        anim.speed = 0;
     }
 
     public override void PassTime()
@@ -22,6 +24,10 @@ public class MinerController : NPCController
         if (isAlive == true && rock != null)
         {
             Die();
+            waitingToRevealDeath = true;
+
+            Destroy(anim);
+            spr.sprite = corpse;
         }
         
         //Working
@@ -32,7 +38,6 @@ public class MinerController : NPCController
             speech.voiceLines.Add("What have you done for the world recently?");
             speech.voiceLines.Add("Digging for the greater good!");
         }
-
 
         //Work done
         if (isAlive && age == 2) {
@@ -52,6 +57,11 @@ public class MinerController : NPCController
             speech.voiceLines.Add("Thank you kind sir!");
             StaticStuff.AddKarma(10);
             isStuck = false;
+        }
+
+        if (waitingToRevealDeath && Vector2.Distance(player.transform.position, transform.position) > 8){
+            StaticStuff.RemoveKarma(10);
+            waitingToRevealDeath = false;
         }
     }
 }
