@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FarmerController : NPCController
-{
+public class FarmerController : NPCController {
 
     public GameObject chowbeetPrefab;
 
@@ -23,10 +22,9 @@ public class FarmerController : NPCController
     Vector2[] farmingSpots;
 
     // Start is called before the first frame update
-    protected override void Start()
-    {
+    protected override void Start() {
         base.Start();
-        speech.voiceLines = new List<string> { "This roight 'ere would make a dandy spot to grow some wheat, and a couple o' chowbeets, why not...", "...if it weren't for all these bloody rocks!"};
+        speech.voiceLines = new List<string> { "This roight 'ere would make a dandy spot to grow some wheat, and a couple o' chowbeets, why not...", "...if it weren't for all these bloody rocks!" };
         speech.fallBackLine = "Darned rocks...";
 
         vibingSpot = transform.position;
@@ -34,8 +32,7 @@ public class FarmerController : NPCController
     }
 
     // Update is called once per frame
-    protected override void Update()
-    {
+    protected override void Update() {
         base.Update();
 
         if (!rocksGone && rock1 == null && rock2 == null && rock3 == null) {
@@ -73,10 +70,19 @@ public class FarmerController : NPCController
             anim.Play("farmerIdle");
             speech.voiceLines = new List<string> { "Feast your eyes upon my magnificent field o' beets!", "Oi'd offa' some to the fella' who 'elped me out, but they unfortunately passed away recently. *sniff*", "Ya know, you remind me uv 'em, a bit. 'ave a beet or two, if ya loik. It's on me." };
             speech.fallBackLine = "This community would starve without me!";
+        } else {
+            speech.Clear();
+            if (rocksGone) {
+                if (StaticStuff.Karma < 20) {
+                    speech.fallBackLine = "Da rottin' remains o' my comrades fertilize da soil, hehe.";
+                } else if (StaticStuff.Karma < 40) {
+                    speech.fallBackLine = "Ge' away from me, outsider, 'fore oi make kebab outta' yer innards!";
+                } else {
+                    speech.fallBackLine = "'ello, stranger! If you're peckish 'round 'ere, oi'm da guy you're lookin fer.";
+                }
+            }
         }
 
-        if (StaticStuff.Karma > 40) {
-            speech.fallBackLine = "Ge' away from me 'fore oi make kebab outta' yer innards!";
-        }
+
     }
 }

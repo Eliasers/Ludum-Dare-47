@@ -54,6 +54,15 @@ public class HungryLadController : NPCController
                 default:
                     break;
             }
+        }   else {
+            speech.Clear();
+            if (StaticStuff.Karma < 20) {
+                speech.fallBackLine = "Begone, stranger. There is naught but suffering here.";
+            } else if (StaticStuff.Karma < 40) {
+                speech.fallBackLine = "'Tis a grim place you encroach upon, stranger.";
+            } else {
+                speech.fallBackLine = "Hello there, sir! Welcome to our community.";
+            }
         }
     }
 }

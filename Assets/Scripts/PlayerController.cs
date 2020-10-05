@@ -291,6 +291,10 @@ public class PlayerController : MonoBehaviour {
         timeDead = 0;
         health = 3;
 
+        if (heldItem != null) {
+
+        }
+
         if (skipDeath) timeDead = timeDeadMax;
         else anim.Play("playerDie");
     }
