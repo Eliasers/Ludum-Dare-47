@@ -48,6 +48,7 @@ public class NPCController : DynamicObjectController {
     }
 
     protected void ResetSpeech() {
+        if (speech == null) return;
         speech.counter = 0;
     }
 }

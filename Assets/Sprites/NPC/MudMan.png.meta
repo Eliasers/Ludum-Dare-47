@@ -8,6 +8,27 @@ TextureImporter:
   - first:
       213: 4327419615975736723
     second: MudMan_1
+  - first:
+      213: 7460682837418005239
+    second: MudMan_0
+  - first:
+      213: 273428642855750716
+    second: MudMan_1
+  - first:
+      213: -4196976352217622038
+    second: MudMan_2
+  - first:
+      213: -9077776297819521133
+    second: MudMan_3
+  - first:
+      213: -6263100995104782588
+    second: MudMan_4
+  - first:
+      213: 1955149433002079955
+    second: MudMan_5
+  - first:
+      213: 5064209262162221244
+    second: MudMan_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6467f746f0c16d220800000000000000
-      internalID: 2510224694741792326
+      spriteID: 7f25722238ba98760800000000000000
+      internalID: 7460682837418005239
       vertices: []
       indices: 
       edges: []
@@ -130,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3958a4c86351e0c30800000000000000
-      internalID: 4327419615975736723
+      spriteID: c3c85d8e6e96bc300800000000000000
+      internalID: 273428642855750716
       vertices: []
       indices: 
       edges: []
