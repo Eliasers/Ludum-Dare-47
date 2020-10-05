@@ -7,7 +7,6 @@ public class MinerController : NPCController
     public GameObject rock;
 
     bool isStuck = true;
-    bool waitingToRevealDeath;
 
     protected override void Start() {
         base.Start();
@@ -24,7 +23,6 @@ public class MinerController : NPCController
         if (isAlive == true && rock != null)
         {
             Die();
-            waitingToRevealDeath = true;
         }
         
         //Working
@@ -54,11 +52,6 @@ public class MinerController : NPCController
             speech.voiceLines.Add("Thank you kind sir!");
             StaticStuff.AddKarma(10);
             isStuck = false;
-        }
-
-        if (waitingToRevealDeath && Vector2.Distance(player.transform.position, transform.position) > 8){
-            StaticStuff.RemoveKarma(10);
-            waitingToRevealDeath = false;
         }
     }
 }
