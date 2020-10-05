@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4a4d6711d5954154f89358be63d4c50c
+guid: 90ded8eb6ba24d24dad9ad6d8c243c99
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -51,7 +51,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -68,7 +68,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -80,7 +80,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -89,10 +89,7 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
-    physicsShape:
-    - - {x: -8, y: -8}
-      - {x: 8, y: -8}
-      - {x: 8, y: -1}
+    physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
