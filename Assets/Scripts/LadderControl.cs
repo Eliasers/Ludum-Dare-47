@@ -21,7 +21,7 @@ public class LadderControl : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown("Enter")) {
+        if (inRange && Input.GetButtonDown("Enter")) {
             player.transform.position = target.transform.position;
         }
     }
