@@ -25,11 +25,11 @@ public class StaticStuff
         }
     }
 
-    public static void RemoveKarma(double amount) {
+    public static void RemoveKarma(float amount) {
         GameObject.FindObjectOfType<WorldState>().RemoveKarma(amount);
     }
 
-    public static void AddKarma(double amount) {
+    public static void AddKarma(float amount) {
         Debug.Log(GameObject.FindObjectOfType<WorldState>() == null);
         GameObject.FindObjectOfType<WorldState>().AddKarma(amount);
     }

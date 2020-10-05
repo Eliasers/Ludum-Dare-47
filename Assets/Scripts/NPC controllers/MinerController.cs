@@ -51,11 +51,6 @@ public class MinerController : NPCController
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.U)) {
-            Debug.Log("SKIP");
-            FindObjectOfType<WorldState>().AddKarma(5);
-            FindObjectOfType<WorldState>().PassTime();
-        }
         if (isAlive && isStuck && rock == null) {
             anim.SetTrigger("StandUp");
             speech.fallBackLine = "I'll always be in your debt!";

@@ -13,6 +13,7 @@ public class WatchmakerController : NPCController
     bool deathRevealed;
 
     private void Start() {
+        base.Start();
         sc = GetComponent<SpeechController>();
     }
 
@@ -25,7 +26,7 @@ public class WatchmakerController : NPCController
             else sc.fallBackLine = "Must. Keep. Working...";
         }
 
-        if (!deathRevealed && Vector2.Distance(player.transform.position, transform.position) < 10) {
+        if (!deathRevealed && !isAlive && Vector2.Distance(player.transform.position, transform.position) < 10) {
             StaticStuff.RemoveKarma(10);
             deathRevealed = true;
         }
