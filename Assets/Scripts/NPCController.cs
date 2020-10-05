@@ -37,14 +37,20 @@ public class NPCController : DynamicObjectController {
         ResetSpeech();
     }
 
-    public virtual void Die() {
+    public virtual void Die(bool keepAnim = false) {
         Destroy(speech);
         Destroy(GetComponent<CircleCollider2D>());
         isAlive = false;
-        Destroy(transform.GetChild(0).gameObject);
+        try {
+            Destroy(transform.GetChild(0).gameObject);
+        } catch (System.Exception e) {
+            Debug.Log("Dying npc had no children: " + e.Message);
+        }
 
-        Destroy(anim);
-        spr.sprite = corpse;
+        if (!keepAnim) {
+            Destroy(anim);
+            spr.sprite = corpse;
+        }
     }
 
     protected void ResetSpeech() {
