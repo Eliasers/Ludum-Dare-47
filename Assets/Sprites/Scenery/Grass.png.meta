@@ -23,6 +23,12 @@ TextureImporter:
   - first:
       213: 475435623110610922
     second: Grass_3
+  - first:
+      213: 3603283902227478779
+    second: Grass_3
+  - first:
+      213: 5299400320964040512
+    second: Grass_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,7 +120,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -135,7 +141,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -156,7 +162,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -166,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8a5966019ef3af50800000000000000
-      internalID: 6891631753638271631
+      spriteID: 23970b322f9cc1f20800000000000000
+      internalID: 3394810260948547890
       vertices: []
       indices: 
       edges: []
@@ -177,6 +183,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf8f6293e9f610230800000000000000
+      internalID: 3603283902227478779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grass_4
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -187,8 +214,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aef03152e26199600800000000000000
-      internalID: 475435623110610922
+      spriteID: 04717a5b3804b8940800000000000000
+      internalID: 5299400320964040512
       vertices: []
       indices: 
       edges: []
