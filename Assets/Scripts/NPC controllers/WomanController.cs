@@ -5,6 +5,7 @@ using UnityEngine;
 public class WomanController : NPCController
 {
     public GameObject canon;
+    public GameObject smokeEffect;
 
     bool canonTriggered = false;
     bool canonBoom = false;
@@ -19,7 +20,16 @@ public class WomanController : NPCController
 
         canonAudio = canon.GetComponent<AudioSource>();
     }
-    
+
+    public override void PassTime() {
+        base.PassTime();
+
+        if(age == 1 && isAlive) {
+            Destroy(canon);
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     override protected void Update()
     {
@@ -35,6 +45,15 @@ public class WomanController : NPCController
                 //Ah shit he dead
                 if (transform.position.x < playerPos.x && playerPos.x < canon.transform.position.x && Mathf.Abs(playerPos.y - transform.position.y) < 4) {
                     GameObject.Find("Player").GetComponent<PlayerController>().Die();
+                    Instantiate(smokeEffect, canon.transform.position + new Vector3(-2.4f, 0.1f), Quaternion.identity);
+                    speech.voiceLines = new List<string> { "Good Heavens!" };
+                    ResetSpeech();
+                    StaticStuff.AddKarma(10);
+                }
+                //Ah shit me dead
+                else {
+                    canon.GetComponent<Animator>().SetTrigger("Reset");
+                    Die(true);
                 }
             }
         }

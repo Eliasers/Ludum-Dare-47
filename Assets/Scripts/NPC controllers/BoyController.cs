@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoyController : MonoBehaviour
+public class BoyController : NPCController
 {
     public Sprite destroyedMudman;
 
     public void MudmanDestroyed() {
         StaticStuff.RemoveKarma(10);
         GetComponent<SpeechController>().fallBackLine = "*quiet sobbing*";
+        ResetSpeech();
         GetComponent<Animator>().SetTrigger("Sad");
         Destroy(this);
     }
