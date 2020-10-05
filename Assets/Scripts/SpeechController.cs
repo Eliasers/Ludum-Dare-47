@@ -23,10 +23,6 @@ public class SpeechController : MonoBehaviour
     public float counter;
     public float secondsPerLetter = 0.2f;
 
-    private void Awake() {
-        textObjPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TextBubble.prefab");
-    }
-
     void Start()
     {
         GameObject textObj = Instantiate(textObjPrefab, new Vector3(textXOffset, textYOffset, 0), Quaternion.identity);
