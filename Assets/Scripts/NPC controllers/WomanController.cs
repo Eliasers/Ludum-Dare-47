@@ -60,6 +60,7 @@ public class WomanController : NPCController
                 //Ah shit me dead
                 else {
                     anim.SetTrigger("Die");
+                    Instantiate(smokeEffect, transform.position, Quaternion.Euler(1,0,0));
                     Die(true);
                 }
             }
