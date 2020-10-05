@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 
     float timeStaggered;
 
-    State state;
+    public State state;
 
     List<GameObject> nearbyItems = new List<GameObject>();
     GameObject nearestItem;
@@ -174,6 +174,8 @@ public class PlayerController : MonoBehaviour {
                         anim.Play("playerIdle");
                     }
                     break;
+                case State.Sleeping:
+                    break;
                 default:
                     break;
             }
@@ -208,11 +210,13 @@ public class PlayerController : MonoBehaviour {
             rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
 
             if (timeDead >= timeDeadMax) {
+                //Reincarnate
                 isAlive = true;
                 transform.position = reincarnationPoint;
                 timeToLive = startTimeToLive;
                 StaticStuff.EndLifeCycle();
                 anim.Play("playerIdle");
+                state = State.Moving;
             }
         }
     }
@@ -298,5 +302,5 @@ public class PlayerController : MonoBehaviour {
         StartCoroutine(StaticStuff.StartFade(src, src.clip.length, 0));
     }
 
-    enum State { Moving, Attacking, Staggered, Grooving }
+    public enum State { Moving, Attacking, Staggered, Grooving, Sleeping }
 }
