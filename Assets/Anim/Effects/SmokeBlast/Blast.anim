@@ -25,7 +25,7 @@ AnimationClip:
     - time: 0.05
       value: {fileID: -5684639096507681415, guid: 2ef5ca630d5a2eb4ca79f4b34fef013b,
         type: 3}
-    - time: 0.1
+    - time: 0.11666667
       value: {fileID: 1727898704389021824, guid: 2ef5ca630d5a2eb4ca79f4b34fef013b,
         type: 3}
     - time: 0.16666667
@@ -40,7 +40,7 @@ AnimationClip:
     - time: 0.33333334
       value: {fileID: 735533588982885605, guid: 2ef5ca630d5a2eb4ca79f4b34fef013b,
         type: 3}
-    - time: 0.4
+    - time: 0.38333333
       value: {fileID: 2514311304800518476, guid: 2ef5ca630d5a2eb4ca79f4b34fef013b,
         type: 3}
     - time: 0.45
@@ -104,7 +104,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.5
-    functionName: 
+    functionName: DestroyEffect
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

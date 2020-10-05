@@ -40,6 +40,7 @@ public class WomanController : NPCController
                 canonAudio.clip = canonFire;
                 canonAudio.Play();
                 canonBoom = true;
+                canon.GetComponent<Animator>().SetTrigger("Reset");
 
                 Vector3 playerPos = GameObject.Find("Player").transform.position;
                 //Ah shit he dead
@@ -52,7 +53,7 @@ public class WomanController : NPCController
                 }
                 //Ah shit me dead
                 else {
-                    canon.GetComponent<Animator>().SetTrigger("Reset");
+                    anim.SetTrigger("Die");
                     Die(true);
                 }
             }
