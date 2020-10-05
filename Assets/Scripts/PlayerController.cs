@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,11 +31,33 @@ public class PlayerController : MonoBehaviour
     GameObject nearestItem;
     GameObject heldItem;
 
+    //Speech
+    Transform textHolder;
+    public GameObject textObjPrefab;
+    GameObject textObj;
+    Animator tAnim;
+    TextMeshPro text;
+
+    public List<string> voiceLines;
+    float speechCounter;
+    public float secondsPerLetter = 0.2f;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        textHolder = transform.GetChild(0);
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+
+        GameObject textObj = Instantiate(textObjPrefab, new Vector2(0, 2.4f), Quaternion.identity);
+        textObj.transform.SetParent(textHolder, false);
+
+        tAnim = textObj.GetComponent<Animator>();
+
+        text = textObj.GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -51,6 +74,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(xMove * movementSpeed, rb.velocity.y);
 
                 if (xMove != 0) { transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); }
+                textHolder.transform.localScale = transform.localScale;
 
                 if (Input.GetButtonDown("Jump") && grounded) {
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -107,12 +131,39 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+        HandleSpeech();
+
         if (nearbyItems.Count > 0) {
             nearbyItems.OrderBy(item => (item.transform.position - transform.position).magnitude);
             nearestItem = nearbyItems[0];
         } else {
             nearestItem = null;
         }
+    }
+
+    void HandleSpeech() {
+        if (speechCounter < 1) {
+            tAnim.SetBool("Fade Out", true);
+            tAnim.SetBool("Fade In", false);
+
+            if (speechCounter <= 0 && tAnim.GetCurrentAnimatorStateInfo(0).IsName("Empty")) {
+                if (voiceLines.Count > 0) {
+                    text.text = voiceLines[0];
+                    voiceLines.RemoveAt(0);
+
+                    DisplayLine();
+                }
+            }
+        }
+
+
+        if (speechCounter > 0) speechCounter -= Time.deltaTime;
+    }
+
+    void DisplayLine() {
+        tAnim.SetBool("Fade In", true);
+        tAnim.SetBool("Fade Out", false);
+        speechCounter = Mathf.Sqrt(text.text.Length) * 5 * secondsPerLetter;
     }
 
     void PickUp() {

@@ -11,9 +11,15 @@ public class WorldState : MonoBehaviour
     static double karma = 0;
     double karmaGoal = 100;
 
+    int age = 0;
+
     public GameObject KarmaIncrease, KarmaDecrease;
 
-    
+    public double Karma {
+        get {
+            return karma;
+        }
+    }
 
     bool[] flag = new bool[(int)flagID.NumberOfFlags];
 
@@ -35,12 +41,14 @@ public class WorldState : MonoBehaviour
         Debug.Log("Karma decrease");
         karma -= amount;
 
-        if (supressNotification == false) {
+        /*if (supressNotification == false) {
             KarmaIncrease.GetComponent<Animator>().SetTrigger("fadeIn");
-        }
+        }*/
     }
 
     public void PassTime() {
+        age++;
+
         DynamicScenery[] dynamicObjs = GameObject.FindObjectsOfType<DynamicScenery>();
         NPCController[] NPCOBjs = GameObject.FindObjectsOfType<NPCController>();
         PlayerController player = GameObject.FindObjectOfType<PlayerController>();

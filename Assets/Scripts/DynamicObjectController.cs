@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DynamicObjectController : MonoBehaviour
 {
-    public int age = 0;
-
+    public int age;
     public virtual void PassTime()
     {
         age++;

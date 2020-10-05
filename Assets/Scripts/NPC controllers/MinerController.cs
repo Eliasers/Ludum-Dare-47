@@ -7,7 +7,6 @@ public class MinerController : NPCController
     public GameObject rock;
     SpeechController speech;
     CircleCollider2D trigger;
-    GameObject player;
 
     bool isAlive = true;
     bool isStuck = true;
@@ -15,8 +14,6 @@ public class MinerController : NPCController
 
     private void Start() {
         base.Start();
-
-        player = GameObject.FindGameObjectWithTag("Player");
         speech = GetComponent<SpeechController>();
     }
 

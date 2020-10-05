@@ -7,9 +7,11 @@ using UnityEditor;
 public class NPCController : DynamicObjectController {
 
     protected Animator anim;
+    protected GameObject player;
 
     protected void Start() {
         anim = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public override void PassTime() {

@@ -67,9 +67,7 @@ public class SpeechController : MonoBehaviour
     void DisplayLine() {
         anim.SetBool("Fade In", true);
         anim.SetBool("Fade Out", false);
-        Debug.Log(Mathf.Sqrt(text.text.Length));
         counter = Mathf.Sqrt(text.text.Length) * 5 * secondsPerLetter;
-        //anim.speed = 1 / (text.text.Length * (secondsPerLetter/3));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

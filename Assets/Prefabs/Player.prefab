@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6759964470098758536}
   - component: {fileID: 6759964470098758539}
   - component: {fileID: 2789172717398930929}
+  - component: {fileID: 985885546}
   m_Layer: 15
   m_Name: Player
   m_TagString: Player
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -385839545
+  m_SortingLayer: -3
   m_SortingOrder: 1
   m_Sprite: {fileID: -2311659948842064771, guid: ac4fe8fc34425324989cda69a640f501,
     type: 3}
@@ -101,6 +102,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   jumpForce: 5
+  textObjPrefab: {fileID: 4276190811689590358, guid: 05de7d0e3c65fde4788754c12c645cb8,
+    type: 3}
+  voiceLines: []
+  secondsPerLetter: 0.2
 --- !u!50 &6759964470098758536
 Rigidbody2D:
   serializedVersion: 4
@@ -167,3 +172,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1.611988}
   m_EdgeRadius: 0
+--- !u!58 &985885546
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759964470098758538}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1}
+  serializedVersion: 2
+  m_Radius: 1.5

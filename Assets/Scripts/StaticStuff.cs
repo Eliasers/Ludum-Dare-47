@@ -19,6 +19,12 @@ public class StaticStuff
         }
     }
 
+    public static double Karma {
+        get {
+            return GameObject.FindObjectOfType<WorldState>().Karma;
+        }
+    }
+
     public static void RemoveKarma(double amount) {
         GameObject.FindObjectOfType<WorldState>().RemoveKarma(amount);
     }
