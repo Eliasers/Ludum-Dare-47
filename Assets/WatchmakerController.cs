@@ -17,6 +17,9 @@ public class WatchmakerController : NPCController
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.name.Contains("Clockium")) {
             Destroy(collision.gameObject);
+
+            StaticStuff.AddKarma(10);
+
             hasClockium = true;
             sc.voiceLines = new List<string> { "Heavens, that's a huge hunk of clockium!", "I'm set for a lifetime!", "In the not-so-distant future, everyone in the region will have a watch.", "You're an angel." };
             if (!sick) sc.fallBackLine = "I love making watches.";

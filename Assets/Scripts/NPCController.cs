@@ -10,11 +10,11 @@ public class NPCController : DynamicObjectController {
     protected GameObject player;
     protected SpeechController speech;
 
-    protected bool isAlive;
+    protected bool isAlive = true;
 
     protected bool deathRevealed;
 
-    protected void Start() {
+    protected virtual void Start() {
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
 
