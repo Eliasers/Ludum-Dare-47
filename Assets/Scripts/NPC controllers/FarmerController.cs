@@ -11,6 +11,10 @@ public class FarmerController : NPCController
     public GameObject rock2;
     public GameObject rock3;
 
+    public GameObject grass;
+    public GameObject wheatLow;
+    public GameObject wheatHigh;
+
     bool rocksGone;
     bool gotToPlanting;
     bool finished;
@@ -53,12 +57,17 @@ public class FarmerController : NPCController
             speech.voiceLines = new List<string> { "This'll be a jolly good chowbeet and wheat field, just you wait!" };
             speech.fallBackLine = "*whistling*";
 
+            wheatLow.SetActive(true);
+            grass.SetActive(false);
         } else if (gotToPlanting && !finished) {
             finished = true;
 
             for (int i = 0; i < farmingSpots.Length; i++) {
                 Instantiate(chowbeetPrefab, farmingSpots[i], Quaternion.identity);
             }
+
+            wheatHigh.SetActive(true);
+            wheatLow.SetActive(false);
 
             transform.position = vibingSpot;
             anim.Play("farmerIdle");
