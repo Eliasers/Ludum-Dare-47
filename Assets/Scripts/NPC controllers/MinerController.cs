@@ -5,16 +5,11 @@ using UnityEngine;
 public class MinerController : NPCController
 {
     public GameObject rock;
-    SpeechController speech;
-    CircleCollider2D trigger;
 
-    bool isAlive = true;
     bool isStuck = true;
-    bool deathRevealed;
 
     private void Start() {
         base.Start();
-        speech = GetComponent<SpeechController>();
     }
 
     public override void PassTime()
@@ -26,8 +21,7 @@ public class MinerController : NPCController
         //Dies
         if (isAlive == true && rock != null)
         {
-            isAlive = false;
-            Destroy(speech);
+            Die();
         }
         
         //Working
@@ -57,12 +51,6 @@ public class MinerController : NPCController
             speech.voiceLines.Add("Thank you kind sir!");
             StaticStuff.AddKarma(10);
             isStuck = false;
-        }
-
-        //Not working anymo :(
-        if (!isAlive && !deathRevealed && Vector2.Distance(player.transform.position, transform.position) < 8) {
-            StaticStuff.RemoveKarma(10);
-            deathRevealed = true;
         }
     }
 }

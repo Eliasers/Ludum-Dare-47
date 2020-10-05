@@ -89,14 +89,14 @@ public class WorldState : MonoBehaviour
 
         float progress = karma / karmaGoal;
         Debug.Log("NEW progress: " + progress);
-
+        /*
         SpriteRenderer fogRenderer = fog.GetComponent<SpriteRenderer>();
         if (karma < 0) {
             fogRenderer.enabled = true;
             fogRenderer.color = new Color(1, 1, 1, -progress);
         } else {
             fogRenderer.enabled = false;
-        }
+        }*/
 
         for (int i = 0; i < dynamicObjs.Length; i++) {
             dynamicObjs[i].PassTime(progress);

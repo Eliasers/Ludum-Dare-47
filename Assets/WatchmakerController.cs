@@ -9,9 +9,6 @@ public class WatchmakerController : NPCController
 
     bool sick;
 
-    bool isAlive = true;
-    bool deathRevealed;
-
     private void Start() {
         base.Start();
         sc = GetComponent<SpeechController>();
@@ -34,8 +31,7 @@ public class WatchmakerController : NPCController
 
     public override void PassTime() {
         base.PassTime();
-
-        if (StaticStuff.Karma > 0) {
+        if (StaticStuff.Karma < 0) {
             if (!sick) {
                 sick = true;
                 if (!hasClockium) {
@@ -45,6 +41,8 @@ public class WatchmakerController : NPCController
                     sc.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something." };
                     sc.fallBackLine = "Must. Keep. Working...";
                 }
+            } else {
+                Die();
             }
         }
     }
