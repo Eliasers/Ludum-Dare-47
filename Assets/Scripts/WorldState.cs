@@ -54,6 +54,7 @@ public class WorldState : MonoBehaviour
         PlayerController player = GameObject.FindObjectOfType<PlayerController>();
 
         double progress = karma / karmaGoal;
+        Debug.Log("NEW progress: " + progress);
 
         for (int i = 0; i < dynamicObjs.Length; i++) {
             dynamicObjs[i].PassTime(progress);
