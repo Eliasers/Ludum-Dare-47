@@ -11,7 +11,8 @@ public class DynamicScenery : DynamicObjectController
 
     private void Start() {
         spr = GetComponent<SpriteRenderer>();
-        if (UnityEngine.Random.Range(0, 1) > 0.5f) spr.flipX = true;
+        UpdateSprite(StaticStuff.Karma / 100);
+        if (UnityEngine.Random.Range(0f, 1f) > 0.5f) spr.flipX = true;
         else spr.flipX = false;
     }
 

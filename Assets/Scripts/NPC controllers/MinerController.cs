@@ -36,6 +36,7 @@ public class MinerController : NPCController
         //Work done
         if (isAlive && age == 2) {
             Destroy(GameObject.Find("MinerExcv"));
+            Destroy(GameObject.Find("MinerTree"));
             transform.position = new Vector3(16, -2, 0);
             anim.SetTrigger("Sit");
             speech.fallBackLine = "Man I'm tired";

@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: fa4d031d83b3402438af5ed05f0f5d66
+guid: 9a585d3dbca2105478f8eee6a24d4d62
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6853316077166303748
-    second: Tree_0
+      213: 2649980101081828879
+    second: MonkHouse_0
   - first:
-      213: 4134985361545656292
-    second: Tree_1
-  - first:
-      213: -1566730818833404899
-    second: Tree_2
-  - first:
-      213: 22485308867703054
-    second: Tree_0
-  - first:
-      213: 4235709562182674980
-    second: Tree_1
-  - first:
-      213: 90771431962346408
-    second: Tree_2
+      213: -8033278047495924363
+    second: MonkHouse_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +52,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -107,64 +95,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tree_0
+      name: MonkHouse_0
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 64
+        width: 96
         height: 64
-      alignment: 9
-      pivot: {x: 0.46, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0179bfe442ef4000800000000000000
-      internalID: 22485308867703054
+      spriteID: f0e06da9cde96c420800000000000000
+      internalID: 2649980101081828879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tree_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.47, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42aaf91b76348ca30800000000000000
-      internalID: 4235709562182674980
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tree_2
+      name: MonkHouse_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 96
         height: 64
-      alignment: 9
-      pivot: {x: 0.44, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a38edde22c724100800000000000000
-      internalID: 90771431962346408
+      spriteID: 575df0d8d20148090800000000000000
+      internalID: -8033278047495924363
       vertices: []
       indices: 
       edges: []
