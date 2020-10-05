@@ -43,7 +43,7 @@ public class WorldState : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.U)) {
             Debug.Log("SKIP");
-            PassTime();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die();
         }
 
         if (Input.GetKeyDown(KeyCode.I)) {
@@ -104,6 +104,5 @@ public class WorldState : MonoBehaviour
         for (int i = 0; i < NPCOBjs.Length; i++) {
             NPCOBjs[i].PassTime();
         }
-        player.Die();
     }
 }

@@ -8,7 +8,7 @@ public class MinerController : NPCController
 
     bool isStuck = true;
 
-    private void Start() {
+    protected override void Start() {
         base.Start();
     }
 
@@ -44,7 +44,8 @@ public class MinerController : NPCController
         }
     }
 
-    private void Update() {
+    protected override void Update() {
+        base.Update();
         if (isAlive && isStuck && rock == null) {
             anim.SetTrigger("StandUp");
             speech.fallBackLine = "I'll always be in your debt!";

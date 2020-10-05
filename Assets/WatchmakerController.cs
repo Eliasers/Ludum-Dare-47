@@ -11,7 +11,7 @@ public class WatchmakerController : NPCController
 
     public GameObject clockUIPrefab;
 
-    private void Start() {
+    protected override void Start() {
         base.Start();
         sc = GetComponent<SpeechController>();
     }
@@ -37,7 +37,8 @@ public class WatchmakerController : NPCController
     public override void PassTime() {
         base.PassTime();
         if (hasClockium) {
-            Instantiate(clockUIPrefab);
+            Instantiate(clockUIPrefab).GetComponent<Canvas>().worldCamera = Camera.main;
+            sc.voiceLines = new List<string>();
         }
 
         if (StaticStuff.Karma < 0) {

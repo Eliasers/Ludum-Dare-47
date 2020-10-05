@@ -21,7 +21,7 @@ public class NPCController : DynamicObjectController {
         speech = GetComponent<SpeechController>();
     }
 
-    protected void Update() {
+    protected virtual void Update() {
         if (!isAlive && !deathRevealed && Vector2.Distance(player.transform.position, transform.position) < 8) {
             StaticStuff.RemoveKarma(10);
             deathRevealed = true;
@@ -37,5 +37,6 @@ public class NPCController : DynamicObjectController {
         Destroy(GetComponent<CircleCollider2D>());
         isAlive = false;
         anim.SetBool("Is Alive", false);
+        Destroy(transform.GetChild(0).gameObject);
     }
 }

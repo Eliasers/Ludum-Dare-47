@@ -42,6 +42,13 @@ public class PlayerController : MonoBehaviour
     float speechCounter;
     public float secondsPerLetter = 0.2f;
 
+    public float startTimeToLive = 250;
+    public float timeToLive;
+    public float timeDead;
+
+    bool isAlive = true;
+
+    public Vector2 reincarnationPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +65,8 @@ public class PlayerController : MonoBehaviour
         tAnim = textObj.GetComponent<Animator>();
 
         text = textObj.GetComponent<TextMeshPro>();
+
+        timeToLive = startTimeToLive;
     }
 
     // Update is called once per frame
@@ -66,76 +75,109 @@ public class PlayerController : MonoBehaviour
         grounded = Physics2D.OverlapArea((Vector2)transform.position + new Vector2(-0.1f, 0), (Vector2)transform.position + new Vector2(0.1f, -0.1f), StaticStuff.SolidLayers);
         anim.SetBool("Grounded", grounded);
 
-        switch (state) {
-            case State.Moving:
-                float xMove = Input.GetAxis("Horizontal");
-                anim.SetFloat("Abs X Move", Mathf.Abs(xMove));
+        if (isAlive) {
+            switch (state) {
+                case State.Moving:
+                    float xMove = Input.GetAxis("Horizontal");
+                    anim.SetFloat("Abs X Move", Mathf.Abs(xMove));
 
-                rb.velocity = new Vector2(xMove * movementSpeed, rb.velocity.y);
+                    rb.velocity = new Vector2(xMove * movementSpeed, rb.velocity.y);
 
-                if (xMove != 0) { transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); }
-                textHolder.transform.localScale = transform.localScale;
+                    if (xMove != 0) { transform.localScale = new Vector2((xMove > 0) ? 1 : -1, 1); }
+                    textHolder.transform.localScale = transform.localScale;
 
-                if (Input.GetButtonDown("Jump") && grounded) {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                }
+                    if (Input.GetButtonDown("Jump") && grounded) {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    }
 
-                if (Input.GetButtonDown("Fire1")) {
-                    state = State.Attacking;
-                    anim.Play("playerAttack");
-                    timeAttacking = 0;
-                    hasAttacked = false;
-                }
+                    if (Input.GetButtonDown("Fire1")) {
+                        state = State.Attacking;
+                        anim.Play("playerAttack");
+                        timeAttacking = 0;
+                        hasAttacked = false;
+                    }
 
-                if (Input.GetButtonDown("PickUp")) {
-                    PickUp();
-                }
-                break;
-            case State.Attacking:
-                //Attack logic
-                timeAttacking += Time.deltaTime;
+                    if (Input.GetButtonDown("PickUp")) {
+                        PickUp();
+                    }
+                    break;
+                case State.Attacking:
+                    //Attack logic
+                    timeAttacking += Time.deltaTime;
 
-                rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
+                    rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
 
-                if (timeAttacking >= attackResolutionTime) {
-                    if (!hasAttacked) {
-                        Collider2D[] r = new Collider2D[5];
-                        ContactFilter2D cf = new ContactFilter2D();
-                        cf.layerMask = StaticStuff.Destructibles;
-                        cf.useLayerMask = true;
-                        Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.25f, cf, r);
-                        for (int i = 0; i < r.Length; i++) {
-                            if (r[i] != null && r[i].gameObject != gameObject) {
-                                 Destroy(r[i].gameObject);
+                    if (timeAttacking >= attackResolutionTime) {
+                        if (!hasAttacked) {
+                            Collider2D[] r = new Collider2D[5];
+                            ContactFilter2D cf = new ContactFilter2D();
+                            cf.layerMask = StaticStuff.Destructibles;
+                            cf.useLayerMask = true;
+                            Physics2D.OverlapCircle((Vector2)transform.position + attackOffset, 0.25f, cf, r);
+                            for (int i = 0; i < r.Length; i++) {
+                                if (r[i] != null && r[i].gameObject != gameObject) {
+                                    Destroy(r[i].gameObject);
+                                }
                             }
+
+
+                            hasAttacked = true;
                         }
 
-
-                        hasAttacked = true;
+                        if (timeAttacking >= attackRecoveryTime) {
+                            state = State.Moving;
+                        }
                     }
+                    break;
+                case State.Staggered:
+                    timeStaggered += Time.deltaTime;
 
-                    if (timeAttacking >= attackRecoveryTime) {
+                    rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
+
+                    if (timeStaggered > 0.4f) {
                         state = State.Moving;
                     }
-                }
-                break;
-            case State.Staggered:
-                timeStaggered += Time.deltaTime;
-                if (timeStaggered > 0.4f) {
-                    state = State.Moving;
-                }
-                break;
-            default:
-                break;
-        }
+                    break;
+                default:
+                    break;
+            }
 
-        HandleSpeech();
+            HandleSpeech();
 
-        if (nearbyItems.Count > 0) {
-            nearbyItems.OrderBy(item => (item.transform.position - transform.position).magnitude);
-            nearestItem = nearbyItems[0];
+            if (nearbyItems.Count > 0) {
+                nearbyItems.OrderBy(item => (item.transform.position - transform.position).magnitude);
+                nearestItem = nearbyItems[0];
+            } else {
+                nearestItem = null;
+            }
+
+            float pttt = timeToLive;
+            timeToLive -= Time.deltaTime;
+
+            if (pttt > 50 && timeToLive < 50) {
+                voiceLines.Add("I feel a strange, unnerving sensation.");
+            }
+
+            if (pttt > 5 && timeToLive < 5) {
+                voiceLines.Add("Ow! It hurts at my very core!");
+            }
+
+            if (timeToLive <= 0) {
+                Debug.Log("Time ran out, heart attack");
+                Die();
+            }
         } else {
-            nearestItem = null;
+            timeDead += Time.deltaTime;
+
+            rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
+
+            if (timeDead >= 3) {
+                isAlive = true;
+                transform.position = reincarnationPoint;
+                timeToLive = startTimeToLive;
+                StaticStuff.EndLifeCycle();
+                anim.Play("playerIdle");
+            }
         }
     }
 
@@ -204,7 +246,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Die() {
-        //Implement. Reincarnate and pass time
+        isAlive = false;
+        anim.Play("playerDie");
+        timeToLive = startTimeToLive;
+        timeDead = 0;
+        health = 3;
     }
 
     enum State { Moving, Attacking, Staggered }

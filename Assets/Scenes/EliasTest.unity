@@ -777,6 +777,8 @@ MonoBehaviour:
   age: 0
   hasClockium: 0
   sc: {fileID: 0}
+  clockUIPrefab: {fileID: 1776375982957370920, guid: 5410066abb7f9844094cdf2459a8374c,
+    type: 3}
 --- !u!95 &609434139
 Animator:
   serializedVersion: 3
@@ -2135,12 +2137,12 @@ PrefabInstance:
     - target: {fileID: 6759964469986286697, guid: 7764d971610cf2a46b67b24006533604,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.64
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 6759964469986286697, guid: 7764d971610cf2a46b67b24006533604,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.38
+      value: 1.373
       objectReference: {fileID: 0}
     - target: {fileID: 6759964469986286697, guid: 7764d971610cf2a46b67b24006533604,
         type: 3}
@@ -2186,6 +2188,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759964470098758534, guid: 7764d971610cf2a46b67b24006533604,
+        type: 3}
+      propertyPath: reincarnationPoint.x
+      value: -1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759964470098758534, guid: 7764d971610cf2a46b67b24006533604,
+        type: 3}
+      propertyPath: reincarnationPoint.y
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 6759964470098758538, guid: 7764d971610cf2a46b67b24006533604,
         type: 3}
