@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float startTimeToLive = 250;
     public float timeToLive;
     public float timeDead;
+    public float timeDeadMax;
 
     bool isAlive = true;
 
@@ -179,7 +180,7 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
 
-            if (timeDead >= 3) {
+            if (timeDead >= timeDeadMax) {
                 isAlive = true;
                 transform.position = reincarnationPoint;
                 timeToLive = startTimeToLive;
@@ -253,12 +254,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Die() {
+    public void Die(bool skipDeath = false) {
         isAlive = false;
         anim.Play("playerDie");
         timeToLive = startTimeToLive;
         timeDead = 0;
         health = 3;
+
+        if (skipDeath = true) timeDead = timeDeadMax;
     }
 
     enum State { Moving, Attacking, Staggered }
