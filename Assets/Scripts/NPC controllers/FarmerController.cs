@@ -68,7 +68,7 @@ public class FarmerController : NPCController {
 
             transform.position = vibingSpot;
             anim.Play("farmerIdle");
-            speech.voiceLines = new List<string> { "Feast your eyes upon my magnificent field o' beets!", "Oi'd offa' some to the fella' who 'elped me out, but they unfortunately passed away recently. *sniff*", "Ya know, you remind me uv 'em, a bit. 'ave a beet or two, if ya loik. It's on me." };
+            speech.voiceLines = new List<string> { "Feast your eyes upon this marvel o' agriculture!", "Oi'd offa' some to the fella' who 'elped me out, but they unfortunately passed away recently. *sniff*", "Ya know, you remind me uv 'em, a bit. 'ave a beet or two, if ya loik. It's on me." };
             speech.fallBackLine = "This community would starve without me!";
         } else {
             speech.Clear();

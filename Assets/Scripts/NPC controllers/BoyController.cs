@@ -10,7 +10,7 @@ public class BoyController : NPCController
         StaticStuff.RemoveKarma(10);
         GetComponent<SpeechController>().fallBackLine = "*quiet sobbing*";
         speech.Clear();
-        speech.voiceLines.Add(speech.fallBackLine);
+        speech.voiceLines.Add("My... My mudman!");
         ResetSpeech();
         GetComponent<Animator>().SetTrigger("Sad");
         Destroy(this);
