@@ -36,23 +36,26 @@ public class WatchmakerController : NPCController
 
     public override void PassTime() {
         base.PassTime();
-        if (hasClockium) {
-            Instantiate(clockUIPrefab).GetComponent<Canvas>().worldCamera = Camera.main;
-            speech.voiceLines = new List<string>();
-        }
 
-        if (StaticStuff.Karma < 0) {
-            if (!sick) {
-                sick = true;
-                if (!hasClockium) {
-                    speech.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something.", "Do you have any clockium, perchance? I need some for the watch I'm making." };
-                    speech.fallBackLine = "*cough*";
+        if (isAlive) {
+            if (hasClockium) {
+                Instantiate(clockUIPrefab).GetComponent<Canvas>().worldCamera = Camera.main;
+                speech.voiceLines = new List<string>();
+            }
+
+            if (StaticStuff.Karma < 0) {
+                if (!sick) {
+                    sick = true;
+                    if (!hasClockium) {
+                        speech.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something.", "Do you have any clockium, perchance? I need some for the watch I'm making." };
+                        speech.fallBackLine = "*cough*";
+                    } else {
+                        speech.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something." };
+                        speech.fallBackLine = "Must. Keep. Working...";
+                    }
                 } else {
-                    speech.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something." };
-                    speech.fallBackLine = "Must. Keep. Working...";
+                    Die();
                 }
-            } else {
-                Die();
             }
         }
     }
