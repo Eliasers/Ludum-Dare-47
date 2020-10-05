@@ -34,6 +34,7 @@ public class BedController : MonoBehaviour {
             player.transform.position = (Vector2)transform.localPosition + Vector2.up * 0.39f + (Vector2)transform.parent.position;
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             player.GetComponent<Animator>().Play("playerDead");
+            txt.color = visible;
         }
         
         if (dying) {
