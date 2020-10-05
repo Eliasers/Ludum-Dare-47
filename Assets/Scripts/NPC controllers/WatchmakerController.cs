@@ -24,6 +24,8 @@ public class WatchmakerController : NPCController
             speech.voiceLines = new List<string> { "Heavens, that's a huge hunk of clockium!", "I'm set for a lifetime!", "In the not-so-distant future, everyone in the region will have a watch.", "You're an angel." };
             if (!sick) speech.fallBackLine = "I love making watches.";
             else speech.fallBackLine = "Must. Keep. Working...";
+
+            ResetSpeech();
         }
 
         if (!deathRevealed && !isAlive && Vector2.Distance(player.transform.position, transform.position) < 10) {

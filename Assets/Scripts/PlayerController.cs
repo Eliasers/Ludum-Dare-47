@@ -198,7 +198,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x / Mathf.Pow(10, Time.deltaTime), rb.velocity.y);
 
             if (timeDead >= timeDeadMax) {
-                Debug.Log(timeDead + ", " + timeDeadMax);
                 isAlive = true;
                 transform.position = reincarnationPoint;
                 timeToLive = startTimeToLive;

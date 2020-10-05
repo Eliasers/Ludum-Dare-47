@@ -5,6 +5,8 @@ using UnityEngine;
 public class FarmerController : NPCController
 {
 
+    public GameObject chowbeetPrefab;
+
     public GameObject rock1;
     public GameObject rock2;
     public GameObject rock3;
@@ -34,8 +36,9 @@ public class FarmerController : NPCController
 
         if (!rocksGone && rock1 == null && rock2 == null && rock3 == null) {
             rocksGone = true;
+            StaticStuff.AddKarma(10);
             speech.voiceLines = new List<string> { "You krumped them rocks? That's roight bloody sweet of ya!", "Oi'll get roight ta plantin'!" };
-            speech.fallBackLine = "Stop buggin' me! Oi'm right 'boutta get ta work, oi am!";
+            speech.fallBackLine = "Stop buggerin' me! Oi'm right 'boutta get ta work, oi am!";
             ResetSpeech();
         }
     }
@@ -50,11 +53,21 @@ public class FarmerController : NPCController
             speech.voiceLines = new List<string> { "This'll be a jolly good chowbeet field, just you wait!" };
             speech.fallBackLine = "*whistling*";
 
+        } else if (gotToPlanting && !finished) {
+            finished = true;
+
+            for (int i = 0; i < farmingSpots.Length; i++) {
+                Instantiate(chowbeetPrefab, farmingSpots[i], Quaternion.identity);
+            }
+
+            transform.position = vibingSpot;
+            anim.Play("farmerIdle");
+            speech.voiceLines = new List<string> { "Feast your eyes upon my magnificent field o' beets!", "Oi'd offa' some to the fella' who 'elped me out, but they unfortunately passed away recently. *sniff*", "Ya know, you remind me o' 'em, a bit. 'ave a beet or two, if ya loik. It's on me." };
+            speech.fallBackLine = "This community would starve without me!";
         }
 
-        if (gotToPlanting && !finished) {
-            finished = true;
-            transform.position = vibingSpot;
+        if (StaticStuff.Karma > 0) {
+            speech.fallBackLine = "Ge' away from me 'fore oi make kebab outta' yer innards!";
         }
     }
 }
