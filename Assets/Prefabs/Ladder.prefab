@@ -215,7 +215,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6907593349591155758}
-  m_Text: Press E to enter
+  m_Text: 'E/Circle: Enter'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
