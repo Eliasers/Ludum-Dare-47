@@ -25,8 +25,13 @@ public class WomanController : NPCController
         base.PassTime();
 
         if(age == 1 && isAlive) {
-            Destroy(canon);
-            Destroy(gameObject);
+            anim.SetTrigger("Leave");
+            Die(true);
+            deathRevealed = true;
+        }
+        else if(age == 1 && !canonTriggered) {
+            anim.SetTrigger("Die");
+            Die(true);
         }
     }
 

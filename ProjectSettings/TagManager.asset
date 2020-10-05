@@ -59,8 +59,14 @@ TagManager:
   - name: Player
     uniqueID: 3909127751
     locked: 0
+  - name: GrassNWheat
+    uniqueID: 180389425
+    locked: 0
   - name: Terrain
     uniqueID: 1195930105
+    locked: 0
+  - name: Terrain2
+    uniqueID: 1028230447
     locked: 0
   - name: Default
     uniqueID: 0

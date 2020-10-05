@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: 8924819078875095685
     second: WomanInNeed_2
+  - first:
+      213: -1088982624512998598
+    second: WomanInNeed_0
+  - first:
+      213: -5954635533698927915
+    second: WomanInNeed_1
+  - first:
+      213: -6521899627070345969
+    second: WomanInNeed_2
+  - first:
+      213: -2487582154669774507
+    second: WomanInNeed_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b8562cf17c7d9750800000000000000
-      internalID: 6313339081646823608
+      spriteID: a33845b921823e0f0800000000000000
+      internalID: -1088982624512998598
       vertices: []
       indices: 
       edges: []
@@ -133,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b55613804385bc090800000000000000
-      internalID: -8013214131476667045
+      spriteID: 5d2f4f6f782ec5da0800000000000000
+      internalID: -5954635533698927915
       vertices: []
       indices: 
       edges: []
@@ -154,8 +166,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 582aaf0aaa35bdb70800000000000000
-      internalID: 8924819078875095685
+      spriteID: f0d28bbf7de8d75a0800000000000000
+      internalID: -6521899627070345969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WomanInNeed_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559ae49c5355a7dd0800000000000000
+      internalID: -2487582154669774507
       vertices: []
       indices: 
       edges: []
