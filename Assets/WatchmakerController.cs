@@ -5,7 +5,6 @@ using UnityEngine;
 public class WatchmakerController : NPCController
 {
     public bool hasClockium;
-    public SpeechController sc;
 
     bool sick;
 
@@ -13,7 +12,6 @@ public class WatchmakerController : NPCController
 
     protected override void Start() {
         base.Start();
-        sc = GetComponent<SpeechController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -23,9 +21,9 @@ public class WatchmakerController : NPCController
             StaticStuff.AddKarma(10);
 
             hasClockium = true;
-            sc.voiceLines = new List<string> { "Heavens, that's a huge hunk of clockium!", "I'm set for a lifetime!", "In the not-so-distant future, everyone in the region will have a watch.", "You're an angel." };
-            if (!sick) sc.fallBackLine = "I love making watches.";
-            else sc.fallBackLine = "Must. Keep. Working...";
+            speech.voiceLines = new List<string> { "Heavens, that's a huge hunk of clockium!", "I'm set for a lifetime!", "In the not-so-distant future, everyone in the region will have a watch.", "You're an angel." };
+            if (!sick) speech.fallBackLine = "I love making watches.";
+            else speech.fallBackLine = "Must. Keep. Working...";
         }
 
         if (!deathRevealed && !isAlive && Vector2.Distance(player.transform.position, transform.position) < 10) {
@@ -38,18 +36,18 @@ public class WatchmakerController : NPCController
         base.PassTime();
         if (hasClockium) {
             Instantiate(clockUIPrefab).GetComponent<Canvas>().worldCamera = Camera.main;
-            sc.voiceLines = new List<string>();
+            speech.voiceLines = new List<string>();
         }
 
         if (StaticStuff.Karma < 0) {
             if (!sick) {
                 sick = true;
                 if (!hasClockium) {
-                    sc.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something.", "Do you have any clockium, perchance? I need some for the watch I'm making." };
-                    sc.fallBackLine = "*cough*";
+                    speech.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something.", "Do you have any clockium, perchance? I need some for the watch I'm making." };
+                    speech.fallBackLine = "*cough*";
                 } else {
-                    sc.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something." };
-                    sc.fallBackLine = "Must. Keep. Working...";
+                    speech.voiceLines = new List<string> { "*cough* *cough*", "Oh, don't worry about me. I've just caught some seasonal nastiness, or something." };
+                    speech.fallBackLine = "Must. Keep. Working...";
                 }
             } else {
                 Die();

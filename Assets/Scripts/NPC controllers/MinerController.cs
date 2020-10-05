@@ -25,9 +25,6 @@ public class MinerController : NPCController
         {
             Die();
             waitingToRevealDeath = true;
-
-            Destroy(anim);
-            spr.sprite = corpse;
         }
         
         //Working
